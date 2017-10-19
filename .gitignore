@@ -13,6 +13,9 @@
 !/log/.keep
 !/tmp/.keep
 
+/coverage/*
+/public/*
+
 /node_modules
 /yarn-error.log
 
