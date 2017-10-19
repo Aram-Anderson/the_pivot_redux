@@ -268,6 +268,7 @@ DEPENDENCIES
   chart-js-rails
   coffee-rails (~> 4.2)
   database_cleaner
+  factory_girl
   factory_girl_rails
   faker
   friendly_id (~> 5.1.0)
