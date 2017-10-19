@@ -11,7 +11,7 @@ describe "analytics class" do
   end
 
   it "can return the average quantity of purchased items" do
-    expect(@analytics.average_quantity_purchased).to eq (0)
+    expect(@analytics.average_quantity_purchased).to eq (2)
   end
 
   it "can return a count of completed orders" do
@@ -19,7 +19,7 @@ describe "analytics class" do
   end
 
   it "can return a total of sales by item title" do
-    expected_hash = {"Adult Penguin"=>0, "Adult Squirrel - Pink/White"=>0, "Adult Tiger"=>0, "Young Pikachu - Boy"=>0, "Adult Giraffe"=>0, "Adult Zebra"=>0, "Baby Unicorn"=>0, "Adult Sloth"=>0}
+    expected_hash = {"Adult Penguin"=>3, "Adult Squirrel - Pink/White"=>2, "Adult Tiger"=>4, "Young Pikachu - Boy"=>1, "Adult Giraffe"=>3, "Adult Zebra"=>1, "Baby Unicorn"=>1, "Adult Sloth"=>1}
     expect(@analytics.sales_by_item_title).to eq (expected_hash)
   end
 
@@ -34,7 +34,7 @@ describe "analytics class" do
   end
 
   it "can return items ordered by a customer" do
-    expected_hash = {"jake@adventuretime.com"=>0, "mimi@mimi.com"=>0}
+    expected_hash = {"jake@adventuretime.com"=>11, "mimi@mimi.com"=>5}
     expect(@analytics.items_ordered_per_customer).to eq(expected_hash)
   end
 end
