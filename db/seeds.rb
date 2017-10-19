@@ -10,14 +10,14 @@ user_3 = User.create(first_name: "Kali", last_name: "Bike Rider", email: "kali@b
 
 description = "Lorem ipsum dolor sit amet, officiis quaerendum eu nam, voluptua deterruisset vix at. In dico sonet aliquip has, eos prima appellantur ea. Omnesque facilisi cu pro. Ut vix brute etiam repudiare. Esse animal explicari ad eam, vis ex oratio ornatus voluptatibus, movet sadipscing ea qui."
 
-unicorn = Category.create(title: "Unicorns")
-squirrel = Category.create(title: "Squirrels")
-giraffe = Category.create(title: "Giraffes")
-cat = Category.create(title: "Cats")
-penguin = Category.create(title: "Penguins")
-pokemon = Category.create(title: "Pokemon")
-zebra = Category.create(title: "Zebras")
-sloth = Category.create(title: "Sloths")
+unicorn = Category.create(title: "Unicorns", slug: "unicorns")
+squirrel = Category.create(title: "Squirrels", slug: "squirrels")
+giraffe = Category.create(title: "Giraffes", slug: "giraffes")
+cat = Category.create(title: "Cats", slug: "cats")
+penguin = Category.create(title: "Penguins", slug: "penguins")
+pokemon = Category.create(title: "Pokemon", slug: "pokemon")
+zebra = Category.create(title: "Zebras", slug: "zebras")
+sloth = Category.create(title: "Sloths", slug: "sloths")
 
 unicorn.items.create(title: "Baby Unicorn",
                       description: description,

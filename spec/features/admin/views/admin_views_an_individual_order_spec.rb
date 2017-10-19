@@ -37,7 +37,7 @@ feature "Admin can view individual order pages" do
     expect(page).to have_content(@item_two.order_items.last.quantity)
     expect(page).to have_content(@item_two.price)
 
-    expect(page).to have_content(order_1.total_price)
+    expect(page).to have_content("32.0")
   end
 end
 

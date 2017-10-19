@@ -1,6 +1,6 @@
 module Helpers
   def create_items
-    @category = Category.create(title: "Cats")
+    @category = Category.create(title: "Cats", slug: "cats")
     @item = @category.items.create(title: "Black Cat Onesie",
                         description: "The best cat onesie you'll ever find",
                         price: 19.99,
@@ -10,7 +10,7 @@ module Helpers
   def two_items
     @one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
 		@two_url = "https://cdn.shopify.com/s/files/1/0768/3211/products/eeyore-kigurumi-onesie-sazac-23866341901_2048x2048_61d2ab59-04ea-4a67-a997-b6443780a1c9_2048x2048.jpg?v=1500604859"
-		@category = Category.create(title: "Animals")
+		@category = Category.create(title: "Animals", slug: "animals")
 		@item_one = @category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00,
 		image: @one_url )
 		@item_two = @category.items.create(title: "Funsie Twosie", description: "too awesome", price: 12.00,
@@ -43,14 +43,14 @@ module Helpers
 
     description = "Lorem ipsum dolor sit amet, officiis quaerendum eu nam, voluptua deterruisset vix at. In dico sonet aliquip has, eos prima appellantur ea. Omnesque facilisi cu pro. Ut vix brute etiam repudiare. Esse animal explicari ad eam, vis ex oratio ornatus voluptatibus, movet sadipscing ea qui."
 
-    @unicorn = Category.create(title: "Unicorns")
-    @squirrel = Category.create(title: "Squirrels")
-    @giraffe = Category.create(title: "Giraffes")
-    @cat = Category.create(title: "Cats")
-    @penguin = Category.create(title: "Penguins")
-    @pokemon = Category.create(title: "Pokemon")
-    @zebra = Category.create(title: "Zebras")
-    @sloth = Category.create(title: "Sloths")
+    @unicorn = Category.create(title: "Unicorns", slug: "unicorns")
+    @squirrel = Category.create(title: "Squirrels", slug: "squirrels")
+    @giraffe = Category.create(title: "Giraffes", slug: "giraffes")
+    @cat = Category.create(title: "Cats", slug: "cats")
+    @penguin = Category.create(title: "Penguins", slug: "penguins")
+    @pokemon = Category.create(title: "Pokemon", slug: "pokemon")
+    @zebra = Category.create(title: "Zebras", slug: "zebras")
+    @sloth = Category.create(title: "Sloths", slug: "sloths")
 
     @unicorn_onesie_1 = @unicorn.items.create(title: "Baby Unicorn",
                           description: description,

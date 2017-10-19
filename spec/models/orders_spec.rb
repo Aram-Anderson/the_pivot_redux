@@ -32,7 +32,7 @@ RSpec.describe Order do
     it 'belongs to a items' do
       user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
       order = user.orders.create(status: "ordered")
-      category = Category.create(title: "Animals")
+      category = Category.create(title: "Animals", slug: "animals")
       one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
 			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url )
       expect(item).to respond_to(:orders)
@@ -43,7 +43,7 @@ RSpec.describe Order do
 		it "can return total price of items" do
 			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
 			order = user.orders.create!(status: "ordered")
-			category = Category.create(title: "Animals")
+			category = Category.create(title: "Animals", slug: "animals")
 			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
 			item_1 = order.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url, category_id: 1)
 			item_2 = order.items.create(title: "Funsie Twosie", description: "number two", price: 22.00, image: one_url, category_id: 1)
@@ -54,7 +54,7 @@ RSpec.describe Order do
 		it "can add an item" do
 			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
 			order = user.orders.create!(status: "ordered")
-			category = Category.create(title: "Animals")
+			category = Category.create(title: "Animals", slug: "animals")
 			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
 			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url)
 			item_hash = {item => 1}
