@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   get '/cart', :to => 'carts#index', :as => 'cart'
 
-  namespace :stores, path: ':store_slug', as: :store do
+  namespace :store, path: ':store_slug', as: :store do
     resources :items, only: [:index, :show]
   end
 

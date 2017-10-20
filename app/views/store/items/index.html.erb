@@ -12,8 +12,7 @@
 			<div class="card border-white" style="width: 15rem;">
 				<%= image_tag item.image.url, size: "250" %>
 				<div class="card-body">
-				<center><p><strong><%= link_to item.title, item_path(item) %></strong></p>
-				<!-- <p>Description: <%= item.description %></p> -->
+				<center><p><strong><%= link_to item.title, store_item_path(store_slug: @store.slug, id: item.id) %></strong></p>
 				<p>Price: $<%= item.price %></p>
 				<% unless item.retired? %>
 				<%= link_to "Add to cart", carts_path(item_id: item.id), method: :post, class: "badge badge-primary" %></center>
