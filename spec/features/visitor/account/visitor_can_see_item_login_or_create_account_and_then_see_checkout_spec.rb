@@ -1,7 +1,12 @@
 RSpec.describe "As a visitor" do
 	describe "when I visit my cart" do
 		it "I can sign up or log in" do
-			admin = User.new(first_name: "McTest",last_name: "McTest", password: "testing", email: "tester@testmail", role: "admin")
+			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
+			default = Role.find(1)
+			bus_man = Role.find(2)
+			bus_admin = Role.find(3)
+			plat_admin = Role.find(4)
+			admin = User.new(first_name: "McTest",last_name: "McTest", password: "testing", email: "tester@testmail", roles: [bus_man])
 			create_items
 	    visit items_path
 			click_on "Add to cart"

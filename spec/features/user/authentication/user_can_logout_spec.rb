@@ -2,6 +2,7 @@
 
 RSpec.describe "As a visitor I can login" do
 	it "as a user I can log out" do
+    Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
 		user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
 		visit '/'
 		click_on 'Login'

@@ -16,7 +16,7 @@ DatabaseCleaner.strategy = :truncation
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-    config.before(:all) do
+    config.before(:each) do
       DatabaseCleaner.clean
     end
     config.after(:each) do

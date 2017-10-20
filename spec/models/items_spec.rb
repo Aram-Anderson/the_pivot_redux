@@ -69,16 +69,18 @@ describe Item do
 	end
 	describe "relationships" do
     it "belongs to a category" do
+			store = create(:store)
       category = Category.create(title: "Animals", slug: "animals")
 			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
-			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url)
+			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url, store: store)
       expect(item).to respond_to(:category)
     end
 
 		it "has many orders" do
+			store = create(:store)
 			category = Category.create(title: "Animals", slug: "animals")
 			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
-			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00)
+			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, store: store)
 
 			expect(item).to respond_to(:orders)
 		end
