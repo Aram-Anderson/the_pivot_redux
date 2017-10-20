@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   enum role: ["default", "admin"]
 
+  after_create :default_roles
+
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.first_name = auth.info.first_name
@@ -36,5 +38,11 @@ class User < ApplicationRecord
 
   def self.user_quantity_of_items_ordered
     group(:email).joins(orders: :order_items).sum(:quantity)
+  end
+
+  private
+
+  def default_roles
+    roles << Role.first if roles.empty?
   end
 end

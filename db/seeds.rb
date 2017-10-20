@@ -3,17 +3,17 @@ Category.destroy_all
 User.destroy_all
 Order.destroy_all
 
-Role.create([{name: "default"}, {name: "business_manager"}, {name: "business_admin"}, {name: "platform_admin"}])
+Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
 
-default = Role.find_by_name("default")
-bus_man = Role.find_by_name("business_manager")
-bus_admin = Role.find_by_name("business_admin")
-plat_admin = Role.find_by_name("platform_admin")
+default = Role.find_by_role(0)
+bus_man = Role.find_by_role(1)
+bus_admin = Role.find_by_role(2)
+plat_admin = Role.find_by_role(3)
 
 User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi", address: "666 Spooky Ave, Halloween City, NO 66666", roles: [bus_man])
-user_1 = User.create!(first_name: "Ricky", last_name: "Hoola", email: "ricky@ricky.com", password: "ricky", address: "1111 Hoola Hoop Drive, Big Island, HI 90505", roles: [default])
-user_2 = User.create(first_name: "Sam", last_name: "Snider", email: "sam@sam.com", password: "sam", address: "1000 Sunny Dr., Sunshine, CO 10000", roles: [default])
-user_3 = User.create(first_name: "Kali", last_name: "Bike Rider", email: "kali@biking.com", password: "bike", address: "1010 Biking Home, Cool CA 10101", roles: [default])
+user_1 = User.create!(first_name: "Ricky", last_name: "Hoola", email: "ricky@ricky.com", password: "ricky", address: "1111 Hoola Hoop Drive, Big Island, HI 90505")
+user_2 = User.create(first_name: "Sam", last_name: "Snider", email: "sam@sam.com", password: "sam", address: "1000 Sunny Dr., Sunshine, CO 10000")
+user_3 = User.create(first_name: "Kali", last_name: "Bike Rider", email: "kali@biking.com", password: "bike", address: "1010 Biking Home, Cool CA 10101")
 
 description = "Lorem ipsum dolor sit amet, officiis quaerendum eu nam, voluptua deterruisset vix at. In dico sonet aliquip has, eos prima appellantur ea. Omnesque facilisi cu pro. Ut vix brute etiam repudiare. Esse animal explicari ad eam, vis ex oratio ornatus voluptatibus, movet sadipscing ea qui."
 
