@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019225313) do
+ActiveRecord::Schema.define(version: 20171020000532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,9 @@ ActiveRecord::Schema.define(version: 20171019225313) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.bigint "store_id"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["store_id"], name: "index_items_on_store_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -63,6 +65,15 @@ ActiveRecord::Schema.define(version: 20171019225313) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "store_orders", force: :cascade do |t|
+    t.bigint "store_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_store_orders_on_order_id"
+    t.index ["store_id"], name: "index_store_orders_on_store_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -99,9 +110,12 @@ ActiveRecord::Schema.define(version: 20171019225313) do
   end
 
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "stores"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "store_orders", "orders"
+  add_foreign_key "store_orders", "stores"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "stores"
   add_foreign_key "user_roles", "users"

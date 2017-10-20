@@ -9,13 +9,14 @@ RSpec.feature "Admin item creation" do
       visit admin_items_path
       two_items
 
-
+      store = create(:store)
       click_on "Create New Item"
 
       fill_in "item[title]", with: "Onesie"
       fill_in "item[description]", with: "This Onesie is awesome!"
       fill_in "item[price]", with: "59.99"
-      page.attach_file("item[image]", Rails.root + 'app/assets/images/alien-onsie.png') 
+      page.attach_file("item[image]", Rails.root + 'app/assets/images/alien-onsie.png')
+      select store.name, from: "stores"
       click_on "Create Item"
 
       expect(current_path).to eq(admin_items_path)
