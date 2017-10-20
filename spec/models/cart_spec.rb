@@ -53,8 +53,9 @@ RSpec.describe Cart do
     it "returns a hash of item objects and quantity" do
       category = Category.create(title: "Animals", slug: "animals")
       one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
-      item_1 = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00)
-      item_2 = category.items.create(title: "Funsie Twosie", description: "number two", price: 10.00)
+      store = create(:store)
+      item_1 = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, store: store)
+      item_2 = category.items.create(title: "Funsie Twosie", description: "number two", price: 10.00, store: store)
 
       expect(subject.item_and_quantity[item_1]).to eq(2)
       expect(subject.item_and_quantity[item_2]).to eq(3)

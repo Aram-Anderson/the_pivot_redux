@@ -21,13 +21,17 @@ Rails.application.routes.draw do
 
   resources :users , only: [:new, :create, :edit, :update]
 
+  resources :items, only: [:index, :show]
+
   resources :orders, only: [:index, :new, :show, :update]
 
   resources :dashboard, only: [:index]
 
   get '/cart', :to => 'carts#index', :as => 'cart'
 
-  resources :items, only: [:index, :show]
+  namespace :store, path: ':store_slug', as: :store do
+    resources :items, only: [:index, :show]
+  end
 
   resources :carts, only: [:index, :create, :destroy]
 

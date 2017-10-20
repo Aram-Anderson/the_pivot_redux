@@ -1,13 +1,15 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :orders
-  has_many :user_roles
+  has_many :user_roles, dependent: :delete_all
   has_many :roles, through: :user_roles
 
   validates :first_name, :last_name, :password, presence: true
   validates :email, presence: true, uniqueness: true
 
   enum role: ["default", "admin"]
+
+  after_create :default_roles
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
@@ -36,5 +38,11 @@ class User < ApplicationRecord
 
   def self.user_quantity_of_items_ordered
     group(:email).joins(orders: :order_items).sum(:quantity)
+  end
+
+  private
+
+  def default_roles
+    roles << Role.first if roles.empty?
   end
 end

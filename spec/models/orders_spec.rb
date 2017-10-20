@@ -4,6 +4,7 @@ RSpec.describe Order do
 	describe 'validations' do
 		describe 'invalid attributes' do
       it 'is invalid without a status' do
+				Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
         user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
         user.orders.create
         expect(user.orders.first).to be_invalid
@@ -12,6 +13,7 @@ RSpec.describe Order do
     end
     describe 'valid attributes' do
       it 'is valid with a status' do
+				Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
         user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
         user.orders.create(status: "ordered")
         expect(user.orders.first).to be_valid
@@ -20,16 +22,19 @@ RSpec.describe Order do
   end
   describe 'realtionships' do
     it 'belongs to a user' do
+			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
       user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
       order = user.orders.create(status: "ordered")
       expect(order).to respond_to(:user)
     end
     it 'has many items' do
+			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
       user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
       order = user.orders.create(status: "ordered")
       expect(order).to respond_to(:items)
     end
     it 'belongs to a items' do
+			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
       user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
       order = user.orders.create(status: "ordered")
       category = Category.create(title: "Animals", slug: "animals")
@@ -41,6 +46,7 @@ RSpec.describe Order do
 
 	describe "instance methods" do
 		it "can return total price of items" do
+			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
 			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
 			order = user.orders.create!(status: "ordered")
 			category = Category.create(title: "Animals", slug: "animals")
@@ -52,11 +58,13 @@ RSpec.describe Order do
 		end
 
 		it "can add an item" do
+			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
 			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			store = create(:store)
 			order = user.orders.create!(status: "ordered")
 			category = Category.create(title: "Animals", slug: "animals")
 			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
-			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url)
+			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url, store: store)
 			item_hash = {item => 1}
 
 			expect(order.items).to eq([])
@@ -67,6 +75,7 @@ RSpec.describe Order do
 		end
 
 		it "can return the order date" do
+			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
 			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
 			order = user.orders.create!(status: "ordered", created_at: "2017-09-13 01:13:04 -0600")
 
@@ -76,6 +85,7 @@ RSpec.describe Order do
 
 	describe "class methods" do
 		it "can count by status" do
+			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
 			user = User.create(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
 			user.orders.create(status: "ordered")
 			user.orders.create(status: "ordered")
@@ -90,6 +100,7 @@ RSpec.describe Order do
 		end
 
 		it "can filter by status" do
+			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
 			user = User.create(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
 			order_1 = user.orders.create(status: "ordered")
 			user.orders.create(status: "ordered")

@@ -1,8 +1,10 @@
-var =  Faker::Hacker.unique.verb 
-
 FactoryGirl.define do
   factory :category do
-    title var
-    slug var.parameterize
+    sequence :title do |n|
+      "#{n}stuff"
+    end
+    sequence :slug do |n|
+      "#{n}things"
+    end
   end
 end
