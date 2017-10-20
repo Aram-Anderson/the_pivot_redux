@@ -2,6 +2,8 @@ Item.destroy_all
 Category.destroy_all
 User.destroy_all
 Order.destroy_all
+Store.destroy_all
+User.destroy_all
 
 User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi", address: "666 Spooky Ave, Halloween City, NO 66666", role: 1)
 user_1 = User.create!(first_name: "Ricky", last_name: "Hoola", email: "ricky@ricky.com", password: "ricky", address: "1111 Hoola Hoop Drive, Big Island, HI 90505", role: 0)
@@ -10,88 +12,92 @@ user_3 = User.create(first_name: "Kali", last_name: "Bike Rider", email: "kali@b
 
 description = "Lorem ipsum dolor sit amet, officiis quaerendum eu nam, voluptua deterruisset vix at. In dico sonet aliquip has, eos prima appellantur ea. Omnesque facilisi cu pro. Ut vix brute etiam repudiare. Esse animal explicari ad eam, vis ex oratio ornatus voluptatibus, movet sadipscing ea qui."
 
-unicorn = Category.create(title: "Unicorns", slug: "unicorns")
-squirrel = Category.create(title: "Squirrels", slug: "squirrels")
-giraffe = Category.create(title: "Giraffes", slug: "giraffes")
-cat = Category.create(title: "Cats", slug: "cats")
-penguin = Category.create(title: "Penguins", slug: "penguins")
-pokemon = Category.create(title: "Pokemon", slug: "pokemon")
-zebra = Category.create(title: "Zebras", slug: "zebras")
-sloth = Category.create(title: "Sloths", slug: "sloths")
+store = StoreCreator.new("Mimi's shop of horrors").execute
 
-unicorn.items.create(title: "Baby Unicorn",
+clothing = Category.create(title: "Clothing", slug: "clothing")
+
+clothing.items.create(title: "Baby Unicorn",
                       description: description,
                       price: 39.99,
-                      image: File.new("./app/assets/images/baby-unicorn-onesie.png"))
+                      image: File.new("./app/assets/images/baby-unicorn-onesie.png"),
+                      store_id: 1)
 
 
-unicorn.items.create(title: "Adult Unicorn",
+clothing.items.create(title: "Adult Unicorn",
                       description: description,
                       price: 59.99,
-                     image: File.new("./app/assets/images/unicorn-onesie.png"))
+                     image: File.new("./app/assets/images/unicorn-onesie.png"),
+                      store_id: 1)
 
 
-squirrel.items.create(title: "Adult Squirrel - Pink/White",
+clothing.items.create(title: "Adult Squirrel - Pink/White",
                       description: description,
                       price: 59.99,
-                      image: File.new("./app/assets/images/flying-squirrel-onesie-1.png"))
+                      image: File.new("./app/assets/images/flying-squirrel-onesie-1.png"),
+                      store_id: 1)
 
 
-squirrel.items.create(title: "Adult Squirrel - Orange/Black",
+clothing.items.create(title: "Adult Squirrel - Orange/Black",
                       description: description,
                       price: 59.99,
-                      image: File.new("./app/assets/images/flying-squirrel-onesie-2.png"))
+                      image: File.new("./app/assets/images/flying-squirrel-onesie-2.png"),
+                      store_id: 1)
 
 
-giraffe.items.create(title: "Adult Giraffe",
+clothing.items.create(title: "Adult Giraffe",
                       description: description,
                       price: 59.99,
-                      image: File.new("./app/assets/images/giraffe-onesie.png"))
+                      image: File.new("./app/assets/images/giraffe-onesie.png"),
+                      store_id: 1)
 
 
-cat.items.create(title: "Adult Leopard",
+clothing.items.create(title: "Adult Leopard",
                       description: description,
                       price: 49.99,
-                      image: File.new("./app/assets/images/leopard-onesie.png"))
+                      image: File.new("./app/assets/images/leopard-onesie.png"),
+                      store_id: 1)
 
 
-cat.items.create(title: "Adult Tiger",
+clothing.items.create(title: "Adult Tiger",
                       description: description,
                       price: 49.99,
-                      image: File.new("./app/assets/images/tiger-onesie.png"))
+                      image: File.new("./app/assets/images/tiger-onesie.png"),
+                      store_id: 1)
 
 
-penguin.items.create(title: "Adult Penguin",
+clothing.items.create(title: "Adult Penguin",
                       description: description,
                       price: 49.99,
-                      image: File.new("./app/assets/images/penguin-onesie.png"))
+                      image: File.new("./app/assets/images/penguin-onesie.png"),
+                      store_id: 1)
 
 
-pokemon.items.create(title: "Young Pikachu - Boy",
+clothing.items.create(title: "Young Pikachu - Boy",
                       description: description,
                       price: 29.99,
-                      image: File.new("./app/assets/images/pikachu-onesie-boy.png"))
+                      image: File.new("./app/assets/images/pikachu-onesie-boy.png"),
+                      store_id: 1)
 
 
-pokemon.items.create(title: "Young Pikachu - Girl",
+clothing.items.create(title: "Young Pikachu - Girl",
                       description: description,
                       price: 29.99,
                       image: File.new("./app/assets/images/pikachu-onesie-girl.png"),
-                      condition: 1)
+                      store_id: 1)
 
 
-zebra.items.create(title: "Adult Zebra",
+clothing.items.create(title: "Adult Zebra",
                       description: description,
                       price: 29.99,
                       image: File.new("./app/assets/images/zebra-onesie.png"),
-                     condition: 1)
+                      store_id: 1)
 
 
-sloth.items.create(title: "Adult Sloth",
+clothing.items.create(title: "Adult Sloth",
                       description: description,
                       price: 69.99,
                       image: File.new("./app/assets/images/sloth-onesie.png"),
-                      condition: 1)
+                      store_id: 1)
 
 
 statuses = ["ordered", "paid", "cancelled", "completed"]
