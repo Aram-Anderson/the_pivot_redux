@@ -2,8 +2,12 @@ require 'rails_helper'
 
 RSpec.feature "Admin Orders" do
   before(:each) do
-    more_orders
-    admin = User.create(first_name: "Mi", last_name: "Le", email: "mi@mi.com", password: "mimi", role: "admin")
+    Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
+    default = Role.find(1)
+    bus_man = Role.find(2)
+    bus_admin = Role.find(3)
+    plat_admin = Role.find(4)
+    admin = User.create(first_name: "Mi", last_name: "Le", email: "mi@mi.com", password: "mimi", roles: Role.where(role: "business_manager"))
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
   end

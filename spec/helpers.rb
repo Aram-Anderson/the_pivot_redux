@@ -20,7 +20,8 @@ module Helpers
   end
 
   def create_orders
-@store = Store.create(name: "Cool Store", slug: "cool-store")
+    Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
+    @store = Store.create(name: "Cool Store", slug: "cool-store")
     user1 = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
 
     order_1 = user1.orders.create(status: "ordered")
@@ -43,7 +44,7 @@ module Helpers
   end
   def twelve_items
     description = "Lorem ipsum dolor sit amet, officiis quaerendum eu nam, voluptua deterruisset vix at. In dico sonet aliquip has, eos prima appellantur ea. Omnesque facilisi cu pro. Ut vix brute etiam repudiare. Esse animal explicari ad eam, vis ex oratio ornatus voluptatibus, movet sadipscing ea qui."
-@store = Store.create(name: "Cool Store", slug: "cool-store")
+    @store = Store.create(name: "Cool Store", slug: "cool-store")
     @unicorn = Category.create(title: "Unicorns", slug: "unicorns")
     @squirrel = Category.create(title: "Squirrels", slug: "squirrels")
     @giraffe = Category.create(title: "Giraffes", slug: "giraffes")
@@ -117,6 +118,7 @@ module Helpers
 
   def setup
     twelve_items
+    Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
     @store = Store.create(name: "Cool Store", slug: "cool-store")
     @user_1 = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi")
     @user_2 = User.create(first_name: "Jake", last_name: "the Dog", email: "jake@adventuretime.com", password: "dog")
