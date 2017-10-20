@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
-  
+
   get '/login', :to => 'sessions#new', :as => 'login'
   post '/login', :to => 'sessions#create'
   delete '/logout', :to => 'sessions#destroy'
@@ -26,7 +26,9 @@ Rails.application.routes.draw do
 
   get '/cart', :to => 'carts#index', :as => 'cart'
 
-  resources :items, only: [:index, :show]
+  namespace :store, path: ':store_slug', as: :store do
+    resources :items, only: [:index, :show]
+  end
 
   resources :carts, only: [:index, :create, :destroy]
 
