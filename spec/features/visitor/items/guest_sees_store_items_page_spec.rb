@@ -5,7 +5,6 @@ feature "User Can Visit a Store's Page" do
     it "reroutes them to the store items page" do
       store = create(:store)
       store_2 = create(:store)
-      binding.pry
       store.items = create_list(:item, 5)
       #As a guest customer
       visit "/"
