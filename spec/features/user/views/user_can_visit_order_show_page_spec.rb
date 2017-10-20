@@ -4,8 +4,9 @@ RSpec.describe "As a user" do
 	describe "visits /orders" do
 		it "can see all past orders" do
 			category = create(:category)
-			item1 = create(:item, category: category)
-			item2 = create(:item, category: category)
+			store = create(:store)
+			item1 = create(:item, category: category, store: store)
+			item2 = create(:item, category: category, store: store)
 			user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing", address: "dummy address")
 
 			order_1 = user.orders.create(status: "ordered")

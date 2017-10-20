@@ -5,5 +5,6 @@ FactoryGirl.define do
     price 8.99
     image nil
     association :category
+    association :store
   end
 end

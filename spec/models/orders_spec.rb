@@ -53,10 +53,11 @@ RSpec.describe Order do
 
 		it "can add an item" do
 			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			store = create(:store)
 			order = user.orders.create!(status: "ordered")
 			category = Category.create(title: "Animals", slug: "animals")
 			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
-			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url)
+			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url, store: store)
 			item_hash = {item => 1}
 
 			expect(order.items).to eq([])
