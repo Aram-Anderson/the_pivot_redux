@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20171020150138) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,7 +102,6 @@ ActiveRecord::Schema.define(version: 20171020150138) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role", default: 0
     t.string "provider"
     t.string "uid"
     t.string "oauth_token"

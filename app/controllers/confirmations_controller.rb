@@ -1,7 +1,7 @@
 class ConfirmationsController < ApplicationController
 
   def new
-    @user = User.fin(session[:user_id])
+    @user = User.find(session[:user_id])
   end
 
   def create
@@ -11,7 +11,7 @@ class ConfirmationsController < ApplicationController
      session[:authenticated] = true
 
      flash[:notice] = "Welcome #{@user.first_name}. The Adventure Begins!"
-     redirect_to secrets_path
+     redirect_to dashboards_path
     else
      flash.now[:error] = "Verification code is incorrect."
      render :new

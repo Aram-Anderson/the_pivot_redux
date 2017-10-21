@@ -57,7 +57,9 @@
       <% if current_user.nil? %>
         <li class="nav-item">
           <%= link_to 'Login', login_path, class: "nav-link active" %>
-          <%= link_to 'Forgot My Password', password_reset_path(current_user.username). method: :get%>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Forgot My Password', password_reset_path, class: "nav-link active" %>
         </li>
       <% end %>
       <% if current_user && current_user.admin? %>
