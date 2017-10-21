@@ -1,16 +1,20 @@
 class ConfirmationsController < ApplicationController
 
   def new
-    @user = current_user
+    @user = User.fin(session[:user_id])
   end
 
   def create
-    if current_user.verification_code == params[:verification_code]
-      session[:authenticated] = true
-      redirect_to users_password_edit_path(current_user.username)
+  @user = User.find params[:user_id]
+    if @user.verification_code == params[:verification_code]
+     @user.confirm!
+     session[:authenticated] = true
+
+     flash[:notice] = "Welcome #{@user.first_name}. The Adventure Begins!"
+     redirect_to secrets_path
     else
-      flash.now[:error] = "Verification code is incorrect"
-        render :new
+     flash.now[:error] = "Verification code is incorrect."
+     render :new
     end
   end
 
