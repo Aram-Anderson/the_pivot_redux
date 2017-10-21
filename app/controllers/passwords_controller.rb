@@ -1,13 +1,18 @@
 class PasswordsController < ApplicationController
-  before_action :authenticated?, only: [:edit, :update]
+  before_action :authenticated?, only: [:update]
 
   def reset
-    ConfirmationSender.send_confirmation_to(current_user)
-    redirect_to new_confirmation_path
+    @user = User.find_by(email: params[:user][:email])
+    if @user.present?
+      ConfirmationSender.send_confirmation_to(@user)
+      redirect_to new_confirmation_path
+    else
+      redirect_to password_reset_path, warning: "Email not found."
+    end
   end
 
   def edit
-    @user = current_user
+    @user = User.new
   end
 
   def update

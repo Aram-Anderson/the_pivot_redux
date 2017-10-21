@@ -1,12 +1,12 @@
 class MessageSender
-  def self.send_code(phone, code)
+  def self.send_code(phone_number, code)
     account_sid = ENV['twilio_sid']
     auth_token = ENV['twilio_token']
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
     message = client.messages.create(
     from: ENV['twilio_number'],
-    to:   phone,
+    to:   phone_number,
     body: code
     )
 
