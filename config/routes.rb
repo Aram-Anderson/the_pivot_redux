@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :confirmations, only: [:new, :create]
 
-  get '/password-reset', :to => 'confirmations#new'
+  get '/password-reset', :to => 'passwords#edit'
   post '/password-reset', :to => 'confirmations#create'
   patch '/password-confirmation', :to => 'passwords#update'
 
