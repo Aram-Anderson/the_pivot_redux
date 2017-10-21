@@ -22,6 +22,16 @@ Rails.application.routes.draw do
     resources :analytics, only: [:index]
   end
 
+  namespace :store, path: ':store_slug', as: :store do
+    namespace :manager do
+      resources :dashboard, only: [:index]
+      namespace :dashboard do
+          resources :items, only: [:index]
+          resources :orders, only: [:index]
+      end
+    end
+  end
+
 
   resources :users , only: [:new, :create, :edit, :update]
 
