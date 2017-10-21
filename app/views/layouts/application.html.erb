@@ -54,6 +54,7 @@
 
   <body>
     <ul class="nav justify-content-center">
+      <li class="nav-item"><%= link_to "My Store", store_manager_dashboard_index_path(Store.first.slug) %></li>
       <% if current_user.nil? %>
         <li class="nav-item">
           <%= link_to 'Login', login_path, class: "nav-link active" %>
@@ -107,7 +108,7 @@
       <div class="title">
         <center>
           <h1>Little Shop Of Funsies</h1><br />
-          <%= link_to (image_tag ('house-of-funsies-banner.png')), root_path %>
+      
         </center>
       </div>
     </div>
