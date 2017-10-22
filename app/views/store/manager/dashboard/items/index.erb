@@ -10,11 +10,13 @@
   </thead>
   <tbody>
     <% @items.each do |item| %>
-    <tr>
+    <tr class="item">
       <td><%= item.title %></td>
       <td><%= item.price %></td>
       <td><%= truncate(item.description) %></td>
+      <td><%= link_to "Edit", edit_store_manager_item_path(item.store.slug, item.id ) %></td>
     </tr>
+
     <% end %>
   </tbody>
 </table>
