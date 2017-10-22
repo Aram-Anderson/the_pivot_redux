@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   post '/login', :to => 'sessions#create'
   delete '/logout', :to => 'sessions#destroy'
 
+  get '/password-reset', to: 'passwords#new', as: 'new_password_reset'
+  post '/password-reset', to: 'passwords#create', as: 'password_reset'
+
+  get '/password-confirmation', to: 'confirmations#new', as: 'new_password'
+  post '/password-confirmation', to: 'passwords#update', as: 'edit_password'
 
   namespace :admin do
     resources :dashboard, only: [:index]
