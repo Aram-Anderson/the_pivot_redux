@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :user_roles, dependent: :delete_all
   has_many :roles, through: :user_roles
+  has_many :stores, through: :user_roles
 
   validates :first_name, :last_name, :password, presence: true
   validates :email, presence: true, uniqueness: true
@@ -40,6 +41,18 @@ class User < ApplicationRecord
     group(:email).joins(orders: :order_items).sum(:quantity)
   end
 
+  def business_manager?(store_id)
+    !!self.user_roles.where("role_id = 1 AND store_id = #{store_id}")
+  end
+
+  def business_admin?(store_id)
+    !!self.user_roles.where("role_id = 2 AND store_id = #{store_id}")
+  end
+
+  def platform_admin?
+    platform_admin
+  end
+  
   private
 
   def default_roles
