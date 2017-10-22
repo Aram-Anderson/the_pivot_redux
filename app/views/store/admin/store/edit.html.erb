@@ -1,0 +1,12 @@
+<%= form_for([:store, :admin, @store], url: store_admin_path(@store.slug), html: { multipart: true }) do |form| %>
+
+  <div class="field">
+    <%= form.label :name %> <br />
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
