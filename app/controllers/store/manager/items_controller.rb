@@ -7,7 +7,7 @@ class Store::Manager::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update(item_params)
     if @item.save
-      redirect_to store_manager_dashboard_items_path(@item.store.slug)
+      redirect_to store_admin_path(@store.slug)
     else
       render :edit
     end

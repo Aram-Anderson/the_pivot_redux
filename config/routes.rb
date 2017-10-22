@@ -18,6 +18,12 @@ Rails.application.routes.draw do
   end
 
   namespace :store, path: ':store_slug', as: :store do
+    resources :admin, only: [:index]
+    namespace :admin do
+      get "/edit", to: "store#edit"
+      patch "/", to: "store#update"
+    end
+
     namespace :manager do
       resources :dashboard, only: [:index]
       namespace :dashboard do
