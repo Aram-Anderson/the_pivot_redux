@@ -4,7 +4,7 @@
 <p>Please enter your email associated with your account to receive a confirmation code to enter on the next page.</p>
 
 <div class="form-group", style="width:50%;">
-  <%= form_for @user, url: password_edit_path do |f| %>
+  <%= form_for(:password, url: password_reset_path) do |f| %>
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, class: "form-control"  %>

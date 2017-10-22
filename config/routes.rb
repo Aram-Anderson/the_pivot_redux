@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   resources :confirmations, only: [:new, :create]
 
-  get '/password-reset', :to => 'passwords#edit', as: :password_reset
-  post '/password-reset', :to => 'passwords#reset', as: :password_edit
-  patch '/password-confirmation', :to => 'passwords#update', as: :password_patch
+  get '/password-reset', to: 'passwords#new', as: 'new_password_reset'
+  post '/password-reset', to: 'passwords#create', as: 'password_reset'
+  get '/password-confirmation', to: 'confirmations#new', as: 'new_password'
+  post '/password-confirmation', to: 'passwords#update', as: 'edit_password'
 
   namespace :admin do
     resources :dashboard, only: [:index]

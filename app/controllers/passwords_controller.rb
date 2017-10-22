@@ -1,27 +1,23 @@
 class PasswordsController < ApplicationController
-  before_action :authenticated?, only: [:update]
+  # before_action :authenticated?, only: [:update]
 
-  def reset
-    @user = User.find_by(email: params[:user][:email])
-    if @user.present?
-      ConfirmationSender.send_confirmation_to(@user)
-      redirect_to new_confirmation_path
-    else
-      redirect_to password_reset_path, warning: "Email not found."
-    end
+  def new
   end
 
-  def edit
-    @user = User.new
+  def create
+    user = User.find_by(email: params[:password][:email])
+    ConfirmationSender.send_confirmation(user)
+    redirect_to new_password_path(email: user.email)
   end
 
   def update
-    if passwords_not_empty? && passwords_equal?
-      current_user.update(password_params)
-      redirect_to users_dashboard_path(current_user.username), success: "Password Updated"
-      session[:authenticated] = false
+    user = User.find_by(email: params[:email])
+    if user && user.verification_code == params[:password][:verification_code]
+      user.update(password_params)
+      session[:user_id] = user.id
+      redirect_to dashboard_path
     else
-      redirect_to password_edit_path(current_user.username), warning: "Error, please try again."
+      redirect_to new_password_path
     end
   end
 
@@ -31,15 +27,15 @@ class PasswordsController < ApplicationController
       params.require(:user).permit(:password, :password_confirmation)
     end
 
-    def passwords_not_empty?
-      params[:user][:password].length > 0 && params[:user][:password_confirmation].length > 0
-    end
+    # def passwords_not_empty?
+    #   params[:user][:password].length > 0 && params[:user][:password_confirmation].length > 0
+    # end
+    #
+    # def passwords_equal?
+    #   params[:user][:password] == params[:user][:password_confirmation]
+    # end
 
-    def passwords_equal?
-      params[:user][:password] == params[:user][:password_confirmation]
-    end
-
-    def authenticated?
-      render :file => "#{Rails.root}/public/404.html", :status => 404 unless session[:authenticated]
-    end
+    # def authenticated?
+    #   render :file => "#{Rails.root}/public/404.html", :status => 404 unless session[:authenticated]
+    # end
 end
