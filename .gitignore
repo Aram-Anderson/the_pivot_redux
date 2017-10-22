@@ -22,6 +22,10 @@ public/images/*
 .byebug_history
 # Ignore secrets.yml file
 secrets.yml
+application.yml
 
 # Ignore application configuration
 /config/application.yml
+public/*
+*.yml
+coverage/*
