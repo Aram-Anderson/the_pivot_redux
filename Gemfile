@@ -19,7 +19,8 @@ gem 'friendly_id', '~> 5.1.0'
 gem "paperclip", "~> 5.0.0"
 gem 'omniauth-google-oauth2'
 gem 'chart-js-rails'
-gem 'twilio-ruby', '~> 5.4', '>= 5.4.2'
+gem 'twilio-ruby'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
