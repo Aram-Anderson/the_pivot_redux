@@ -7,7 +7,7 @@ class MessageSender
 
     message = client.messages.create(
       from: ENV['TWILIO_NUMBER'],
-      to: phone_number,
+      to: phone,
       body: code
       )
 
