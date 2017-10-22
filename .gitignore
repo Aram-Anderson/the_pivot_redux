@@ -14,7 +14,7 @@
 !/tmp/.keep
 
 /coverage/*
-/public/*
+public/images/*
 
 /node_modules
 /yarn-error.log
