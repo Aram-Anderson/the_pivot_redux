@@ -9,10 +9,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :phone, presence: true
 
-  enum role: ["default", "admin"]
-
-  after_create :default_roles
-
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.first_name = auth.info.first_name
@@ -43,20 +39,15 @@ class User < ApplicationRecord
   end
 
   def business_manager?(store_id)
-    !!self.user_roles.where("role_id = 1 AND store_id = #{store_id}")
+    !self.user_roles.where("role_id = 1 AND store_id = #{store_id}").empty?
   end
 
   def business_admin?(store_id)
-    !!self.user_roles.where("role_id = 2 AND store_id = #{store_id}")
+    !self.user_roles.where("role_id = 2 AND store_id = #{store_id}").empty?
   end
 
   def platform_admin?
     platform_admin
   end
-  
-  private
 
-  def default_roles
-    roles << Role.first if roles.empty?
-  end
 end
