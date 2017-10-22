@@ -1,15 +1,11 @@
-<div>
+<div class="container">
   <p>To complete your phone number verification, please enter the 6-digit activation code.</p>
-</div>
-
-<div>
-	<%= form_for(:password, url: edit_password_path) do |f| %>
-			<%= hidden_field_tag :email, @user.email %>
-			<%= f.label :verification_code, "Verification Code" %>
-			<%= f.text_field :verification_code %>
-			<%= f.label :password, "New Password" %>
-			<%= f.password_field :password %>
-			<%= f.password_field :password_confirmation %>
-			<%= f.submit "Submit" %>
-	<% end %>
+  <div>
+  	<%= form_for(:password, url: edit_password_path) do |f| %>
+  			<%= hidden_field_tag :email, @user.email %>
+  			<%= f.label :verification_code, "Verification Code" %>
+  			<%= f.text_field :verification_code %>
+  			<%= f.submit "Submit" %>
+  	<% end %>
+  </div>
 </div>
