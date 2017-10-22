@@ -13,6 +13,7 @@
         <tr>
           <td class="table-light"><%= f.label :password %></td>
           <td class="table-light"><%= f.password_field :password %></td>
+          <%= link_to "(Forgot My Password)", password_reset_path %>
         </tr>
         <tr class="action">
           <td class="table-light"><%= f.submit name="Login", class: "btn btn-primary" %></td>

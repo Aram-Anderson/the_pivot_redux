@@ -1,0 +1,31 @@
+<div class="container">
+  <p>To complete your phone number verification, please enter the 6-digit activation code.</p>
+  <div class="row">
+    <div class="col-3">
+        <table class="table">
+
+
+
+
+
+  	<%= form_for(:password, url: edit_password_path) do |f| %>
+    <tr>
+  		<%= hidden_field_tag :email, @user.email %>
+  	  <td class="table-light"><%= f.label :verification_code, "Verification Code" %></td>
+  		<td class="table-light"><%= f.text_field :verification_code %></td>
+    </tr>
+    <tr>
+      <td class="table-light"><%= f.label :password, "New Password" %></td>
+			 <td class="table-light"><%= f.password_field :password %></td>
+      </tr>
+      <tr>
+        <td class="table-light"><%= f.label :password_confirmation, "Confirm Password" %></td>
+			  <td class="table-light"><%= f.password_field :password_confirmation %></td>
+      </tr>
+      <tr>
+  			<td class="table-light"><%= f.submit "Submit", class: "btn btn-primary" %></td>
+      </tr>
+  	<% end %>
+    </div>
+  </div>
+</div>

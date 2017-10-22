@@ -5,11 +5,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    flash[:notice] = "Logged in as #{user.first_name} #{user.last_name}"
-    session[:user_id] = user.id
-    redirect_to dashboard_index_path
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      ConfirmationSender.send_confirmation(@user)
+      redirect_to new_confirmation_path
+    else
+      render :new
+    end
   end
+
 
   def edit
     @user = current_user
@@ -35,7 +40,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :address)
+    params.require(:user).permit(:first_name, :last_name, :email, :password_digest, :address, :phone)
   end
 
 end
