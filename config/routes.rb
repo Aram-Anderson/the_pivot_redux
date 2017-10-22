@@ -29,6 +29,7 @@ Rails.application.routes.draw do
           resources :items, only: [:index]
           resources :orders, only: [:index]
       end
+      resources :items, only: [:edit, :update]
     end
   end
 
