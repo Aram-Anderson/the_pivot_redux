@@ -14,6 +14,7 @@ mimi = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", 
 user_1 = User.create!(first_name: "Ricky", last_name: "Hoola", email: "ricky@ricky.com", password: "ricky", address: "1111 Hoola Hoop Drive, Big Island, HI 90505")
 user_2 = User.create(first_name: "Sam", last_name: "Snider", email: "sam@sam.com", password: "sam", address: "1000 Sunny Dr., Sunshine, CO 10000")
 user_3 = User.create(first_name: "Kali", last_name: "Bike Rider", email: "kali@biking.com", password: "bike", address: "1010 Biking Home, Cool CA 10101")
+user_4 = User.create(first_name: "Sam", last_name: "Nayrouz", email: "sam@sam.com", password: "sam123", address: "1010 Biking Home, Cool CA 10101", phone: "+3864511696", roles: [plat_admin])
 
 description = "Lorem ipsum dolor sit amet, officiis quaerendum eu nam, voluptua deterruisset vix at. In dico sonet aliquip has, eos prima appellantur ea. Omnesque facilisi cu pro. Ut vix brute etiam repudiare. Esse animal explicari ad eam, vis ex oratio ornatus voluptatibus, movet sadipscing ea qui."
 
@@ -212,7 +213,7 @@ sloth.items.create(title: "Adult Sloth",
 
 
 statuses = ["ordered", "paid", "cancelled", "completed"]
-users = [user_1.id, user_2.id, user_3.id]
+users = [user_1.id, user_2.id, user_3.id, user_4.id]
 
 statuses.each do |status|
   users.each do |user|

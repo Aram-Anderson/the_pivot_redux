@@ -5,8 +5,9 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles
   has_many :stores, through: :user_roles
 
-  validates :first_name, :last_name, :password, presence: true
+  validates :first_name, :last_name, :password_digest, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :phone, presence: true
 
   enum role: ["default", "admin"]
 
