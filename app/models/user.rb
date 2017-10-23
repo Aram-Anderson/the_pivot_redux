@@ -52,12 +52,12 @@ class User < ApplicationRecord
     group(:email).joins(orders: :order_items).sum(:quantity)
   end
 
-  def business_manager?(store_id)
-    !self.user_roles.where("role_id = 1 AND store_id = #{store_id}").empty?
+  def business_manager?
+    roles.exists?(role: "business_manager")
   end
 
-  def business_admin?(store_id)
-    !self.user_roles.where("role_id = 2 AND store_id = #{store_id}").empty?
+  def business_admin?
+    roles.exists?(role: "business_admin")
   end
 
   def platform_admin?

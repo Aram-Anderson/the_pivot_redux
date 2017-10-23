@@ -19,7 +19,7 @@ feature "As a logged in Business Manager" do
 
       expect(current_path).to eq("/#{store.slug}/manager/dashboard")
       click_on "Items"
-      expect(current_path).to eq("/#{store.slug}/manager/dashboard/items")
+      expect(current_path).to eq("/#{store.slug}/manager/items")
       expect(page).to have_content(item1.title)
       expect(page).to have_content(item2.title)
       expect(page).to have_content(item3.title)
@@ -40,7 +40,7 @@ feature "As a logged in Business Manager" do
       click_on "My Store"
 
       click_on "Orders"
-      expect(current_path).to eq("/#{store.slug}/manager/dashboard/orders")
+      expect(current_path).to eq("/#{store.slug}/manager/orders")
 
       expect(page).to have_content(order1.user.full_name)
       expect(page).to have_content(order2.user.full_name)
