@@ -4,8 +4,8 @@ RSpec.describe Order do
 	describe 'validations' do
 		describe 'invalid attributes' do
       it 'is invalid without a status' do
-				Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-        user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+				Role.create([{role: 0}, {role: 1}])
+        user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail", phone: "+13032222222")
         user.orders.create
         expect(user.orders.first).to be_invalid
       end
@@ -13,8 +13,8 @@ RSpec.describe Order do
     end
     describe 'valid attributes' do
       it 'is valid with a status' do
-				Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-        user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+				Role.create([{role: 0}, {role: 1}])
+        user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail", phone: "+13032222222")
         user.orders.create(status: "ordered")
         expect(user.orders.first).to be_valid
       end
@@ -22,20 +22,20 @@ RSpec.describe Order do
   end
   describe 'realtionships' do
     it 'belongs to a user' do
-			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-      user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			Role.create([{role: 0}, {role: 1}])
+      user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail", phone: "+13032222222")
       order = user.orders.create(status: "ordered")
       expect(order).to respond_to(:user)
     end
     it 'has many items' do
-			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-      user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			Role.create([{role: 0}, {role: 1}])
+      user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail", phone: "+13032222222")
       order = user.orders.create(status: "ordered")
       expect(order).to respond_to(:items)
     end
     it 'belongs to a items' do
-			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-      user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			Role.create([{role: 0}, {role: 1}])
+      user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail", phone: "+13032222222")
       order = user.orders.create(status: "ordered")
       category = Category.create(title: "Animals", slug: "animals")
       one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
@@ -46,8 +46,8 @@ RSpec.describe Order do
 
 	describe "instance methods" do
 		it "can return total price of items" do
-			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			Role.create([{role: 0}, {role: 1}])
+			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail", phone: "+13032222222")
 			order = user.orders.create!(status: "ordered")
 			category = Category.create(title: "Animals", slug: "animals")
 			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
@@ -58,8 +58,8 @@ RSpec.describe Order do
 		end
 
 		it "can add an item" do
-			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			Role.create([{role: 0}, {role: 1}])
+			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail", phone: "+13032222222")
 			store = create(:store)
 			order = user.orders.create!(status: "ordered")
 			category = Category.create(title: "Animals", slug: "animals")
@@ -75,8 +75,8 @@ RSpec.describe Order do
 		end
 
 		it "can return the order date" do
-			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			Role.create([{role: 0}, {role: 1}])
+			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail", phone: "+13032222222")
 			order = user.orders.create!(status: "ordered", created_at: "2017-09-13 01:13:04 -0600")
 
 			expect(order.date).to eq("Sep. 13, 2017")
@@ -85,8 +85,8 @@ RSpec.describe Order do
 
 	describe "class methods" do
 		it "can count by status" do
-			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-			user = User.create(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			Role.create([{role: 0}, {role: 1}])
+			user = User.create(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail", phone: "+13032222222")
 			user.orders.create(status: "ordered")
 			user.orders.create(status: "ordered")
 			user.orders.create(status: "ordered")
@@ -100,8 +100,8 @@ RSpec.describe Order do
 		end
 
 		it "can filter by status" do
-			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-			user = User.create(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			Role.create([{role: 0}, {role: 1}])
+			user = User.create(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail", phone: "+13032222222")
 			order_1 = user.orders.create(status: "ordered")
 			user.orders.create(status: "ordered")
 			user.orders.create(status: "ordered")

@@ -5,11 +5,11 @@ describe "As an admin when I visit the dashboard" do
   before(:each) do
     twelve_items
     create_orders
-    Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-    default = Role.find(1)
-    bus_man = Role.find(2)
-    bus_admin = Role.find(3)
-    plat_admin = Role.find(4)
+    Role.create([{role: 0}, {role: 1}])
+    
+    bus_man = Role.find(1)
+    bus_admin = Role.find(2)
+    
     admin_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", roles: [bus_man])
 
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin_user)

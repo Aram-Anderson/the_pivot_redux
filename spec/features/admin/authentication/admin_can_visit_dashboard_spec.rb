@@ -3,11 +3,11 @@ require 'rails_helper'
   feature "admin dashboard" do
     feature "admin can visit the admin dashboard" do
       scenario "I will see a heading on the page that says Admin Dashboard" do
-        Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-        default = Role.find(1)
-        bus_man = Role.find(2)
-        bus_admin = Role.find(3)
-        plat_admin = Role.find(4)
+        Role.create([{role: 0}, {role: 1}])
+        
+        bus_man = Role.find(1)
+        bus_admin = Role.find(2)
+        
         admin_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", roles: [bus_man])
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin_user)
@@ -21,11 +21,11 @@ require 'rails_helper'
   describe "as a logged in user when I visit /admin/dashboard" do
     it "I see a 404 error" do
 
-      Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-      default = Role.find(1)
-      bus_man = Role.find(2)
-      bus_admin = Role.find(3)
-      plat_admin = Role.find(4)
+      Role.create([{role: 0}, {role: 1}])
+      
+      bus_man = Role.find(1)
+      bus_admin = Role.find(2)
+      
 
       default_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", roles: [bus_man])
 
@@ -54,11 +54,11 @@ feature "as an Admin" do
   describe "when I log into my account" do
 
     it "I am redirected to the Admin Dashboard" do
-      Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-      default = Role.find(1)
-      bus_man = Role.find(2)
-      bus_admin = Role.find(3)
-      plat_admin = Role.find(4)
+      Role.create([{role: 0}, {role: 1}])
+      
+      bus_man = Role.find(1)
+      bus_admin = Role.find(2)
+      
       admin = User.create(first_name: "Admin", last_name:"McAdmin", email: "admin@email", password: "boom", roles: [bus_man])
 
       visit login_path
