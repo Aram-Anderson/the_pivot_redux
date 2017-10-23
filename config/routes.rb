@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root :to => 'main#index'
 
+  get '/auth/twitter', to: 'sessions#create', as: 'twitter_login'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'

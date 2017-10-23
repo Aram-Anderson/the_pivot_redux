@@ -5,12 +5,14 @@ class SessionsController < ApplicationController
   def create
     if params[:provider].present?
       @user = User.from_omniauth(request.env['omniauth.auth'])
+      binding.pry
       login_successful
     else
       @user = User.find_by(email: params[:session][:email])
       verify_user
     end
   end
+
   def destroy
     session.clear
     redirect_to root_path
