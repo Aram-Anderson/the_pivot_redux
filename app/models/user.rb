@@ -6,8 +6,12 @@ class User < ApplicationRecord
   has_many :stores, through: :user_roles
 
   validates :first_name, :last_name, :password_digest, presence: true
-  validates :email, presence: true, uniqueness: true
-  validates :phone, presence: true
+  validates :phone, presence: :true, on: :create, unless: :oauth_login
+  validates :email, presence: :true, on: :create, unless: :oauth_login
+
+  def oauth_login
+    oauth_token.present?
+  end
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
