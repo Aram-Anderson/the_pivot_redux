@@ -1,0 +1,23 @@
+<center><h1>Your Store Items</h1></center>
+<div class="container">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+    <tr class="item">
+      <td><%= item.title %></td>
+      <td><%= item.price %></td>
+      <td><%= truncate(item.description) %></td>
+      <td><%= link_to "Edit", edit_store_manager_item_path(item.store.slug, item.id ) %></td>
+    </tr>
+
+    <% end %>
+  </tbody>
+</table>
+</div>
