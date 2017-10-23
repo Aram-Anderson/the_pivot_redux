@@ -11,14 +11,24 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
-      user.email = auth.info.email
-      user.address = "1331 17th St ll100, Denver, CO 80202"
-      user.password = 'jeffcasimir'
-      user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.save
+      if auth.provider == "twitter"
+        user.uid = auth.uid
+        user.first_name = auth.info.name.split(" ")[0]
+        user.last_name = auth.info.name.split(" ")[1]
+        user.email = auth.info.email
+        user.address = 'address'
+        user.password = '17'
+        user.oauth_token = auth.credentials.token
+        user.save
+      else
+        user.first_name = auth.info.first_name
+        user.last_name = auth.info.last_name
+        user.email = auth.info.email
+        user.address = auth.info.address
+        user.password = '17'
+        user.oauth_token = auth.credentials.token
+        user.save
+      end
     end
   end
 

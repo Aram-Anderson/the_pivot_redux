@@ -17,13 +17,13 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
 gem 'friendly_id', '~> 5.1.0'
 gem "paperclip", "~> 5.0.0"
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'chart-js-rails'
 gem 'twilio-ruby'
 gem 'figaro'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
