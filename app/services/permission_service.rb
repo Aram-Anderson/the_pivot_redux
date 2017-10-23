@@ -26,7 +26,6 @@ class PermissionService
       return true if controller == "dashboard" && action.in?(%w(index))
       return true if controller == "store/items" && action.in?(%w(index destroy create new update edit))
       return true if controller == "store/admin/store" && action.in?(%w(update))
-      return true if controller == "store/admin" && action.in?(%w(index))
       return true if controller == "categories" && action.in?(%w(index destroy create new update edit))
     elsif user.business_admin?
       return true if controller == "main" && action.in?(%w(index))
@@ -41,7 +40,7 @@ class PermissionService
       return true if controller == "store/admin/users" && action.in?(%w(index update show))
       return true if controller == "dashboard" && action.in?(%w(index))
       return true if controller == "store/items" && action.in?(%w(index destroy create new update edit))
-      return true if controller == "store/admin/store" && action.in?(%w(update))
+      return true if controller == "store/admin/store" && action.in?(%w(update edit))
       return true if controller == "store/admin" && action.in?(%w(index))
       return true if controller == "categories" && action.in?(%w(show))
     elsif user.business_manager?

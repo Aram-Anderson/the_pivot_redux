@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'platform_admin/index'
+
   root :to => 'main#index'
 
   get '/auth/twitter', to: 'sessions#create', as: 'twitter_login'

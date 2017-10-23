@@ -1,10 +1,11 @@
 class Store::Admin::StoreController < ApplicationController
   def edit
+
     @store = Store.find_by(slug: params[:store_slug])
   end
 
   def update
-    @store = Store.find_by(slug: params[:store_slug]
+    @store = Store.find_by(slug: params[:store_slug])
     @store.update(store_params)
     if @store.save
       redirect_to store_admin_path(@store.slug)
