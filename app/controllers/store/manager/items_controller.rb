@@ -1,4 +1,9 @@
 class Store::Manager::ItemsController < ApplicationController
+
+  def index
+    @items = Store.find_by_slug(params["store_slug"]).items
+  end
+
   def edit
     @item = Item.find(params[:id])
   end

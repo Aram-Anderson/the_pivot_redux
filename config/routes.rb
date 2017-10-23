@@ -32,10 +32,8 @@ Rails.application.routes.draw do
 
     namespace :manager do
       resources :dashboard, only: [:index]
-      namespace :dashboard do
-          resources :items, only: [:index]
-          resources :orders, only: [:index]
-      end
+      resources :items, only: [:index]
+      resources :orders, only: [:index]
       resources :items, only: [:edit, :update]
     end
   end
