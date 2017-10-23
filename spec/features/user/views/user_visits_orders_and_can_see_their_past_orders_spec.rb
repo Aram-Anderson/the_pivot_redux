@@ -2,7 +2,7 @@ RSpec.describe "As a user" do
 	describe "visits /orders" do
 		it "can see all past orders" do
 			two_items
-			Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
+			Role.create([{role: 0}, {role: 1}])
 			user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing", address: "dummy address")
 			order_1 = user.orders.create(status: "ordered")
 			OrderItem.create(order: order_1, item: @item_one)

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "New user can create an account" do
   scenario "should see a link for create account on root page" do
-    Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
+    Role.create([{role: 0}, {role: 1}])
     visit '/'
 
     expect(page).to have_link("Login")

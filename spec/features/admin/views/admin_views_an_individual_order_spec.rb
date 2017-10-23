@@ -8,11 +8,11 @@ feature "Admin can view individual order pages" do
   end
 
   scenario "As an admin, when I visit an individual order page" do
-    Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
-    default = Role.find(1)
-    bus_man = Role.find(2)
-    bus_admin = Role.find(3)
-    plat_admin = Role.find(4)
+    Role.create([{role: 0}, {role: 1}])
+    
+    bus_man = Role.find(1)
+    bus_admin = Role.find(2)
+    
     user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing", address: "235 Address Place, Address CO 91050")
     order_1 = user.orders.create(status: "ordered")
     OrderItem.create(order: order_1, item: @item_one, quantity: 1)

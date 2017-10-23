@@ -20,7 +20,7 @@ module Helpers
   end
 
   def create_orders
-    Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
+    Role.create([{role: 0}, {role: 1}])
     @store = Store.create(name: "Cool Store", slug: "cool-store")
     user1 = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
 
@@ -118,7 +118,7 @@ module Helpers
 
   def setup
     twelve_items
-    Role.create([{role: 0}, {role: 1}, {role: 2}, {role: 3}])
+    Role.create([{role: 0}, {role: 1}])
     @store = Store.create(name: "Cool Store", slug: "cool-store")
     @user_1 = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi")
     @user_2 = User.create(first_name: "Jake", last_name: "the Dog", email: "jake@adventuretime.com", password: "dog")
