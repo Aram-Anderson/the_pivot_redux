@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022185937) do
+ActiveRecord::Schema.define(version: 20171023182538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20171022185937) do
     t.datetime "oauth_expires_at"
     t.string "verification_code"
     t.string "phone"
+    t.boolean "platform_admin", default: false
   end
 
   add_foreign_key "items", "categories"
