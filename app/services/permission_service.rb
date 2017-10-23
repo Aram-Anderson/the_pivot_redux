@@ -1,6 +1,6 @@
 class PermissionService
 
-def initialize(user, controller, action)
+  def initialize(user, controller, action)
     @user = user || User.new
     @controller = controller
     @action = action
