@@ -32,8 +32,7 @@ class SessionsController < ApplicationController
   def login_successful
     session[:user_id] = @user.id
     flash[:notice] = "Logged in as #{@user.first_name} #{@user.last_name}"
-      redirect_to dashboard_index_path
-    
+    redirect_to dashboard_index_path
   end
 
 
