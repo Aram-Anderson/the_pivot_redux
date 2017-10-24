@@ -56,6 +56,7 @@ class PermissionService
       return true if controller == "store/items" && action.in?(%w(index destroy create new update edit))
       return true if controller == "categories" && action.in?(%w(show))
     elsif user
+      return true if controller == "dashboard" && action.in?(%w(index))
       return true if controller == "main" && action.in?(%w(index))
       return true if controller == "passwords" && action.in?(%w(new create update))
       return true if controller == "confirmations" && action.in?(%w(new))

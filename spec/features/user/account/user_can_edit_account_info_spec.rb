@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "a registered user" do
   scenario "is able to edit account information" do
-    user = User.create(first_name: "danny", last_name: "t", email: "a@b.com", password: "123")
+    user = User.create(first_name: "danny", last_name: "t", email: "a@b.com", password: "123", phone: "+12023332222")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit "/dashboard"
