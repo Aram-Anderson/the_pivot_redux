@@ -7,7 +7,7 @@ RSpec.describe "As a user" do
 			store = create(:store)
 			item1 = create(:item, category: category, store: store)
 			item2 = create(:item, category: category, store: store)
-			user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing", address: "dummy address")
+			user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing", address: "dummy address", phone: "+13032223333")
 
 			order_1 = user.orders.create(status: "ordered")
 			OrderItem.create(order: order_1, item: item1, quantity: 1)
