@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       ConfirmationSender.send_confirmation(@user)
-      redirect_to new_confirmation_path
+      redirect_to root_path
     else
       render :new
     end
