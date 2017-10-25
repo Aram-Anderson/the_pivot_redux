@@ -2,71 +2,69 @@ require 'rails_helper'
 
 describe 'Stores API' do
   it 'see all stores' do
-    create_list(:item, 3)
+    create_list(:store, 3)
 
-    get '/api/v1/items'
+    get '/api/v1/stores'
 
     expect(response).to have_http_status(200)
 
-    items = JSON.parse(response.body)
-    item = items.first
+    stores = JSON.parse(response.body)
+    store = stores.first
 
-    expect(items.count).to eq(3)
-    expect(item).to have_key 'name'
-    expect(item).to have_key 'description'
-    expect(item).to have_key 'image_url'
+    expect(stores.count).to eq(3)
+    expect(store).to have_key 'name'
+    expect(store).to have_key 'slug'
     expect(item).to_not have_key 'created_at'
     expect(item).to_not have_key 'updated_at'
   end
 
-  it 'can get one item by id' do
-    id = create(:item).id
+  it 'can get one store by id' do
+    id = create(:store).id
 
-    get "/api/v1/items/#{id}"
+    get "/api/v1/stores/#{id}"
 
-    item = JSON.parse(response.body)
+    store = JSON.parse(response.body)
 
     expect(response).to have_http_status(200)
-    expect(item["id"]).to eq(id)
-    expect(item).to have_key 'name'
-    expect(item).to have_key 'description'
-    expect(item).to have_key 'image_url'
+    expect(store["id"]).to eq(id)
+    expect(store).to have_key 'name'
+    expect(store).to have_key 'slug'
     expect(item).to_not have_key 'created_at'
     expect(item).to_not have_key 'updated_at'
   end
 
-  it 'can create an item' do
-    item_params ={ name: "Cup", description: "To hold our liquid drinks", image_url: "http://via.placeholder.com/350x150"}
+  it 'can create a store' do
+    store_params ={ name: "Wally World", slug: "slug"}
 
-    post "/api/v1/items", params: {item: item_params}
-    item = Item.last
+    post "/api/v1/stores", params: {store: store_params}
+    store = Store.last
 
     assert_response :success
     expect(response).to have_http_status(:created)
-    expect(item.name).to eq(item_params[:name])
-    expect(item.description).to eq(item_params[:description])
-    expect(item.image_url).to eq(item_params[:image_url])
+    expect(store).to have_key 'name'
+    expect(store).to have_key 'slug'
+    expect(item).to_not have_key 'created_at'
+    expect(item).to_not have_key 'updated_at'
   end
 
-  it 'can update an item' do
-    id = create(:item).id
-    previous_name = Item.last.name
-    item_params = {name: "Cup", description: "Hold your liquids!", image_url: "http://via.placeholder.com/350x150"}
+  it 'can update a store' do
+    id = create(:store).id
+    previous_name = Store.last.name
+    store_params = {name: "Wally World", slug: "slug"}
 
-    put "/api/v1/items/#{id}", params: {item: item_params}
-    item = Item.find_by(id: id)
+    put "/api/v1/stores/#{id}", params: {store: store_params}
+    store = Store.find_by(id: id)
 
     expect(response).to have_http_status(200)
-    expect(item.name).to eq(item_params[:name])
-    expect(item.description).to eq(item_params[:description])
-    expect(item.image_url).to eq(item_params[:image_url])
-    expect(item.name).to_not eq(previous_name)
+    expect(store.name).to eq(store_params[:name])
+    expect(store.slug).to eq(item_params[:slug])
+    expect(store.name).to_not eq(previous_name)
   end
 
-  it 'can delete an item' do
-    item = create(:item)
-    expect(Item.count).to eq(1)
-    delete "/api/v1/items/#{item.id}"
+  it 'can delete a store' do
+    store = create(:store)
+    expect(Store.count).to eq(1)
+    delete "/api/v1/stores/#{store.id}"
 
     expect(response).to have_http_status(:no_content)
   end
