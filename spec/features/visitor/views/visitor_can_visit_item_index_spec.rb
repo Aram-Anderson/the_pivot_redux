@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "As a visitor" do
 	it "from the root, visitor can visit items index and see all items" do
-		two_items
-		binding.pry
+		store
 		visit '/items'
 		# click_on 'All Items'
 
