@@ -24,7 +24,6 @@ require "rails_helper"
 
           expect(page).to have_content(@item.price)
           expect(page).to have_content(@item.title)
-          expect(page).to have_content("$19.99")
        end
      end
    end
@@ -32,8 +31,11 @@ require "rails_helper"
    describe "a visitor has 1 item in their cart" do
      describe "they click on decrease quantity" do
        it "the user will not see anything in the cart" do
-        create_items
-        visit items_path
+       store = create(:store)
+       category = create(:category)
+       @item = create(:item, store: store, category: category)
+
+        visit store_items_path(store_slug: store.slug)
 
         click_on "Add to cart"
 
@@ -41,7 +43,7 @@ require "rails_helper"
 
         expect(page).to have_content(1)
         expect(page).to have_content(@item.title)
-        expect(page).to have_content("$19.99")
+        expect(page).to have_content(@item.price)
 
         click_on "-"
 
