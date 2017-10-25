@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'Orders API' do
+
   it 'sees all orders' do
     create_list(:order, 5)
 

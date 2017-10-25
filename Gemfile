@@ -38,7 +38,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'launchy'
   gem 'faker'
-  gem 'factory_girl'
+  # gem 'factory_girl'
 end
 
 group :development do

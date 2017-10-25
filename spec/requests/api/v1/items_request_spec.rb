@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 describe 'Items API' do
+  let(:user) { User.create(platform_admin: true)}
+
   it 'see all items' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
+
     create_list(:item, 3)
 
     get '/api/v1/items'
@@ -21,6 +25,8 @@ describe 'Items API' do
   end
 
   it 'can get one item by id' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
+
     id = create(:item).id
 
     get "/api/v1/items/#{id}"
@@ -38,6 +44,8 @@ describe 'Items API' do
   end
 
   it 'can create an item' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
+
     item_params ={ title: "Cup", description: "To hold our liquid drinks", image: "http://via.placeholder.com/350x150", price: 1.99 }
 
     post "/api/v1/items", params: {item: item_params}
@@ -52,6 +60,8 @@ describe 'Items API' do
   end
 
   it 'can update an item' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
+
     id = create(:item).id
     previous_name = Item.last.title
     item_params = {title: "Cup", description: "Hold your liquids!", image: "http://via.placeholder.com/350x150", price: 1.99}
@@ -68,6 +78,8 @@ describe 'Items API' do
   end
 
   it 'can delete an item' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
+
     item = create(:item)
 
     expect(Item.count).to eq(1)
