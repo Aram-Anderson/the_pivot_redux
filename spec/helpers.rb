@@ -120,8 +120,8 @@ module Helpers
     twelve_items
     Role.create([{role: 0}, {role: 1}])
     @store = Store.create(name: "Cool Store", slug: "cool-store")
-    @user_1 = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi")
-    @user_2 = User.create(first_name: "Jake", last_name: "the Dog", email: "jake@adventuretime.com", password: "dog")
+    @user_1 = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi", phone: "+13039993333")
+    @user_2 = User.create(first_name: "Jake", last_name: "the Dog", email: "jake@adventuretime.com", password: "dog", phone: "+13039994444")
     @order = Order.create(status: "ordered", user_id: @user_1.id)
 
     items_hash = {

@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :role do
-    name "MyString"
+    role 0
   end
 end

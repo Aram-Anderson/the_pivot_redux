@@ -19,7 +19,9 @@ feature "New user can create an account" do
     fill_in "user[email]", with: "test@testmail.com"
     fill_in "user[password]", with: "testing"
     fill_in "user[address]", with: "dummy address"
-    fill_in "user[phone]", with: "23423432"
+    fill_in "user[phone]", with: "+13032229999"
+
+    allow(MessageSender).to receive(:send_code).and_return(true)
 
     click_on "Submit"
 
