@@ -13,7 +13,7 @@ describe "order item methods" do
 
   it "can return top three items" do
     expect(OrderItem.top_three_items.count).to eq(3)
-    expect(OrderItem.top_three_items.first.title).to eq("Adult Squirrel - Pink/White")
+    expect(OrderItem.top_three_items.first.title).to eq("Adult Penguin")
   end
 
   it "can average quantity" do
