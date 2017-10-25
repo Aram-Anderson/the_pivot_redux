@@ -7,6 +7,7 @@ class PermissionService
   end
 
   def authorized?
+    binding.pry
     return true if controller == "store/items" && action.in?(%w(index show))
     return true if controller == "stores" && action.in?(%w(index show))
     return true if controller == "orders" && action.in?(%w(index show))
