@@ -42,7 +42,7 @@ describe 'Stores API' do
   it 'can create a store' do
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
 
-    store_params ={ name: "Wally World", slug: "slug"}
+    store_params = { name: "Wally World", slug: "slug"}
 
     post "/api/v1/stores", params: {store: store_params}
     store = Store.last

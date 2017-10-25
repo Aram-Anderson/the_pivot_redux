@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 describe 'Items API' do
-  let(:user) { User.create(platform_admin: true)}
+  let(:user) { User.create(platform_admin: true) }
 
   it 'see all items' do
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
 
     create_list(:item, 3)
 
-    get '/api/v1/items'
+    get "/api/v1/items"
 
     expect(response).to have_http_status(200)
 

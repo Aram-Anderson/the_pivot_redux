@@ -1,3 +1,3 @@
 class StoreSerializer < ActiveModel::Serializer
-  attributes :name, :slug
+  attributes :id, :name, :slug
 end
