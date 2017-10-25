@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.feature "Adding items to the cart" do
   before(:each) do
 
-    create_items
+    store = create(:store)
+    category = create(:category)
+    @item = create(:item, store: store, category: category)
 
-    visit items_path
+    visit store_items_path(store_slug: store.slug)
 
   end
   context "When a visitor adds items to their cart" do
@@ -15,18 +17,18 @@ RSpec.feature "Adding items to the cart" do
 
       click_on "Add to cart"
 
-      expect(page).to have_content("You now have 1 Black Cat Onesie")
+      expect(page).to have_content("You now have #{@item.title}")
 
     end
     it "the message correctly increments for multiple items" do
 
       click_on "Add to cart"
 
-      expect(page).to have_content("You now have 1 Black Cat Onesie")
+      expect(page).to have_content("You now have 1 #{@item.title}")
 
       click_on "Add to cart"
 
-      expect(page).to have_content("You now have 2 Black Cat Onesies")
+      expect(page).to have_content("You now have 2 #{@item.title}")
     end
     it "the total number of items in the cart increments" do
 
