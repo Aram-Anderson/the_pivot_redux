@@ -45,26 +45,26 @@ describe 'Items API' do
 
     assert_response :success
     expect(response).to have_http_status(:created)
-    expect(item.name).to eq(item_params[:title])
+    expect(item.title).to eq(item_params[:title])
     expect(item.description).to eq(item_params[:description])
-    expect(item.image_url).to eq(item_params[:image])
+    expect(item.image).to eq(item_params[:image])
     expect(item.price).to eq(item_params[:price])
   end
 
   it 'can update an item' do
     id = create(:item).id
-    previous_name = Item.last.name
+    previous_name = Item.last.title
     item_params = {title: "Cup", description: "Hold your liquids!", image: "http://via.placeholder.com/350x150", price: 1.99}
 
     put "/api/v1/items/#{id}", params: {item: item_params}
     item = Item.find_by(id: id)
 
     expect(response).to have_http_status(200)
-    expect(item.name).to eq(item_params[:title])
+    expect(item.title).to eq(item_params[:title])
     expect(item.description).to eq(item_params[:description])
-    expect(item.image_url).to eq(item_params[:image])
+    expect(item.image).to eq(item_params[:image])
     expect(item.price).to eq(item_params[:price])
-    expect(item.name).to_not eq(previous_name)
+    expect(item.title).to_not eq(previous_name)
   end
 
   it 'can delete an item' do
