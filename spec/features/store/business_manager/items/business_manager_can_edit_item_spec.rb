@@ -9,7 +9,7 @@ feature "business manager can edit item" do
     item = create(:item, store_id: store.id)
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(manager)
 
-    visit "/#{store.slug}/manager/dashboard/items"
+    visit "/#{store.slug}/manager/items"
 
     first('.item').click_on('Edit')
 
@@ -20,7 +20,7 @@ feature "business manager can edit item" do
 
     click_on "Update Item"
 
-    expect(current_path).to eq("/#{store.slug}/manager/dashboard/items")
+    expect(current_path).to eq("/#{store.slug}/manager/items")
 
     expect(page).to have_content("new item title")
     expect(page).to have_content("new description")
