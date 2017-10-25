@@ -6,6 +6,5 @@ RSpec.describe "As a visitor can visit category show page" do
 		item = create(:item, store: store, category: category)
 
 		visit category_path(category)
-
 	end
 end
