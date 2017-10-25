@@ -1,35 +1,37 @@
 require 'rails_helper'
 
 describe "Platform Admin Dashboard" do
-  it "sees the top selling merchant for the platform" do
+  let(:user) { User.new(platform_admin => true) }
 
-  end
+    it "sees the top selling merchant for the platform" do
 
-  it "sees the top selling items for the platform" do
+    end
 
-  end
+    it "sees the top selling items for the platform" do
 
-  it "sees all inactive stores" do
+    end
 
-  end
+    it "sees all inactive stores" do
 
-  it "sees all active stores" do
+    end
 
-  end
+    it "sees all active stores" do
 
-  it "sees the store with the most items" do
+    end
 
-  end
+    it "sees the store with the most items" do
 
-  it "sees items with the most revenue" do
+    end
 
-  end
+    it "sees items with the most revenue" do
 
-  it "sees a stores revenue by date" do
+    end
 
-  end
+    it "sees a stores revenue by date" do
 
-  it "sees the customers favorite store" do
+    end
 
-  end
+    it "sees the customers favorite store" do
+
+    end
 end
