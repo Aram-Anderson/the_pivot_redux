@@ -23,11 +23,10 @@ feature "New user can create an account" do
 
     allow(MessageSender).to receive(:send_code).and_return(true)
 
+    allow(MessageSender).to receive(:send_code).and_return(true)
     click_on "Submit"
 
     expect(current_path).to eq(root_path)
-    expect(page).to have_content "Logged in as Tester McTest"
-    expect(page).to have_content "test@testmail.com"
 
     expect(page).to_not have_link "Login"
     expect(page).to have_link "Logout"
