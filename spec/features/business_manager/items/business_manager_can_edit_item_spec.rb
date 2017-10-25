@@ -27,13 +27,3 @@ feature "business manager can edit item" do
     expect(page).to have_content(100.0)
   end
 end
-
-
-
-    # As A Business Manager
-    # And I visit "/storename/manager/items"
-    # And I click on "Edit Item"
-    # And I fill in a new name & description
-    # And I click on "Update Item"
-    # I should be redirected to "/storename/manager/items"
-    # Then I should see my updated item
