@@ -23,6 +23,7 @@ gem 'omniauth-google-oauth2'
 gem 'chart-js-rails'
 gem 'twilio-ruby'
 gem 'figaro'
+gem 'active_model_serializers'
 
 
 group :development, :test do

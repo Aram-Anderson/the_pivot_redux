@@ -40,6 +40,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :items, except: [:new, :edit]
+      resources :orders, except: [:new, :edit]
+      resources :stores, except: [:new, :edit]
+    end
+  end
 
   resources :users , only: [:new, :create, :edit, :update]
 
