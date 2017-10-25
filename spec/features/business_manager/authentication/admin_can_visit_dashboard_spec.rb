@@ -16,8 +16,6 @@ require 'rails_helper'
       end
     end
 
-
-
   describe "as a visitor when I visit /admin/dashboard" do
     it "I see a 404 error" do
 

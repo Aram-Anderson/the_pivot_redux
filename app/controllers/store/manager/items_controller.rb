@@ -18,6 +18,20 @@ class Store::Manager::ItemsController < ApplicationController
     end
   end
 
+  def new
+    @item = Item.new
+  end
+
+  def create
+    store = Store.find_by(slug: params[:store_slug])
+    @item = store.items.new(item_params)
+    if @item.save
+      redirect_to store_manager_items_path(@item.store.slug)
+    else
+      render :new
+    end
+  end
+
   private
 
     def item_params
