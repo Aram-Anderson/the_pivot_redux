@@ -20,7 +20,7 @@ feature "business manager can edit item" do
 
     click_on "Update Item"
 
-    expect(current_path).to eq("/#{store.slug}/manager/dashboard/items")
+    expect(current_path).to eq("/#{store.slug}/manager/items")
 
     expect(page).to have_content("new item title")
     expect(page).to have_content("new description")
