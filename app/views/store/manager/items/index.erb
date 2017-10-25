@@ -9,6 +9,8 @@
     </tr>
   </thead>
   <tbody>
+    <%= link_to "Create New Item", new_store_manager_item_path(@items.first.store.slug) %>
+
     <% @items.each do |item| %>
     <tr class="item">
       <td><%= item.title %></td>
