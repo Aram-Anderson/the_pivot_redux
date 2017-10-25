@@ -17,7 +17,7 @@ RSpec.feature "Adding items to the cart" do
 
       click_on "Add to cart"
 
-      expect(page).to have_content("You now have #{@item.title}")
+      expect(page).to have_content("You now have 1 #{@item.title}")
 
     end
     it "the message correctly increments for multiple items" do
@@ -51,7 +51,7 @@ RSpec.feature "Adding items to the cart" do
       expect(page).to have_content(@item.title)
       expect(page).to have_content("2")
       within '.total' do
-        expect(page).to have_content "$39.98"
+        expect(page).to have_content (@item.price * 2)
       end
     end
   end
