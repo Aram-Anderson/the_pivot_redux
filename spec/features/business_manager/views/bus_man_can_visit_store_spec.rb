@@ -14,11 +14,9 @@ feature "As a logged in Business Manager" do
       order3.items << [item2]
       manager = create(:user, roles: [role])
       allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(manager)
-      visit "/"
-      click_on "My Store"
-
-      expect(current_path).to eq("/#{store.slug}/manager/dashboard")
+      visit "/#{store.slug}/manager/dashboard"
       click_on "Items"
+
       expect(current_path).to eq("/#{store.slug}/manager/items")
       expect(page).to have_content(item1.title)
       expect(page).to have_content(item2.title)
@@ -36,8 +34,7 @@ feature "As a logged in Business Manager" do
       order3.items << [item4]
       manager = create(:user, roles: [role])
       allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(manager)
-      visit "/"
-      click_on "My Store"
+      visit "/#{store.slug}/manager/dashboard"
 
       click_on "Orders"
       expect(current_path).to eq("/#{store.slug}/manager/orders")

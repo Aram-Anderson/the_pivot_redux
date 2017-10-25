@@ -34,12 +34,19 @@ Rails.application.routes.draw do
 
     namespace :manager do
       resources :dashboard, only: [:index]
-      resources :items, only: [:index]
+      resources :items, only: [:index, :edit, :update, :new, :create]
       resources :orders, only: [:index]
-      resources :items, only: [:edit, :update]
+      # resources :items, only: [:edit, :update]
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :items, except: [:new, :edit]
+      resources :orders, except: [:new, :edit]
+      resources :stores, except: [:new, :edit]
+    end
+  end
 
   resources :users , only: [:new, :create, :edit, :update]
 
