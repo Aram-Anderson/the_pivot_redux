@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :item do
     title { Faker::Name.first_name }
     description "Some thing to do stuff with"

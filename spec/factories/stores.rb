@@ -1,6 +1,6 @@
 var = Faker::Name.first_name
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :store do
     sequence :name do |n|
       "#{n}MyStore"
