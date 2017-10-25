@@ -15,7 +15,9 @@ feature "As a logged in Business Manager" do
       manager = create(:user, roles: [role])
       allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(manager)
       visit "/"
-      click_on "My Store"
+      select("#{store.name}", from: "stores")
+      # click_on "My Store"
+      # click_on "#{store.name}"
 
       expect(current_path).to eq("/#{store.slug}/manager/dashboard")
       click_on "Items"

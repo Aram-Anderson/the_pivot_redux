@@ -2,14 +2,14 @@ require 'rails_helper'
 
 feature "business manager can edit item" do
   scenario "as a logged in business manager" do
-    role = Role.create(role: 1)
+    role = Role.create(role: 0)
     manager = create(:user, roles: [role])
     store = create(:store)
-    # user_role = UserRole.create(user_id: user.id, role_id: role.id, store_id: store.id)
+    user_role = UserRole.create(user_id: manager.id, role_id: role.id, store_id: store.id)
     item = create(:item, store_id: store.id)
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(manager)
 
-    visit "/#{store.slug}/manager/dashboard/items"
+    visit "/#{store.slug}/manager/items"
 
     first('.item').click_on('Edit')
 
