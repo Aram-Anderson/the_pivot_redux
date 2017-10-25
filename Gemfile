@@ -31,7 +31,7 @@ group :development, :test do
   gem 'rspec-pride', '~> 3.2', '>= 3.2.1'
   gem 'pry-rails'
   gem 'capybara'
-  gem "factory_girl_rails"
+  gem "factory_bot_rails"
   gem 'database_cleaner'
   gem 'pry'
   gem 'shoulda-matchers'

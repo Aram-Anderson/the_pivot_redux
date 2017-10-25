@@ -13,7 +13,7 @@ feature "User Can Visit a Store's Page" do
 
       click_on store_1.name
 
-      expect(page).to have_content item.name
+      expect(page).to have_content item.title
     end
   end
 end

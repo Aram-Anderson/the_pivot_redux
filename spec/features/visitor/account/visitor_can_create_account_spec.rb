@@ -21,11 +21,10 @@ feature "New user can create an account" do
     fill_in "user[address]", with: "dummy address"
     fill_in "user[phone]", with: "23423432"
 
+    allow(MessageSender).to receive(:send_code).and_return(true)
     click_on "Submit"
 
     expect(current_path).to eq(root_path)
-    expect(page).to have_content "Logged in as Tester McTest"
-    expect(page).to have_content "test@testmail.com"
 
     expect(page).to_not have_link "Login"
     expect(page).to have_link "Logout"
