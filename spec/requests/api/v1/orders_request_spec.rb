@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 describe 'Orders API' do
+  let(:user) { User.create(platform_admin: true)}
 
   it 'sees all orders' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
+
     create_list(:order, 5)
 
     get '/api/v1/orders'
@@ -24,6 +27,8 @@ describe 'Orders API' do
   end
 
   it 'can get one order by id' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
+
     id = create(:order).id
 
     get "/api/v1/orders/#{id}"
@@ -34,8 +39,8 @@ describe 'Orders API' do
     expect(order["id"]).to eq(id)
     expect(order).to have_key 'status'
     expect(order).to have_key 'user_id'
-    expect(order).to_not have_key 'created_at'
-    expect(order).to_not have_key 'updated_at'
+    expect(order).to have_key 'created_at'
+    expect(order).to have_key 'updated_at'
     expect(order).to_not have_key 'image_file_name'
     expect(order).to_not have_key 'image_content_type'
     expect(order).to_not have_key 'image_file_size'
@@ -43,20 +48,24 @@ describe 'Orders API' do
   end
 
   it 'can update an order status' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
+
     id = create(:order).id
     previous_status = Order.last.status
-    order_params = {status: "Paid"}
+    order_params = { status: "cancelled" }
 
     put "/api/v1/orders/#{id}", params: {order: order_params}
     order = Order.find_by(id: id)
 
     expect(response).to have_http_status(200)
-    expect(order.status).to eq(item_params[:status])
+    expect(order.status).to eq(order_params[:status])
     expect(order.status).to_not eq(previous_status)
   end
 
   it 'can create an order' do
-    order_params = { status: "Paid", user_id: 1 }
+    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
+
+    order_params = { status: "paid", user_id: 1 }
 
     post "/api/v1/orders", params: { order: order_params}
     order = Order.last
@@ -68,6 +77,8 @@ describe 'Orders API' do
   end
 
   it 'can delete an order' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
+
     order = create(:order)
 
     expect(Order.count).to eq(1)

@@ -63,7 +63,7 @@ describe 'Items API' do
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
 
     id = create(:item).id
-    previous_name = Item.last.title
+    previous_title = Item.last.title
     item_params = {title: "Cup", description: "Hold your liquids!", image: "http://via.placeholder.com/350x150", price: 1.99}
 
     put "/api/v1/items/#{id}", params: {item: item_params}
@@ -74,7 +74,7 @@ describe 'Items API' do
     expect(item.description).to eq(item_params[:description])
     expect(item.image).to eq(item_params[:image])
     expect(item.price).to eq(item_params[:price])
-    expect(item.title).to_not eq(previous_name)
+    expect(item.title).to_not eq(previous_title)
   end
 
   it 'can delete an item' do
