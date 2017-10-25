@@ -49,10 +49,10 @@ describe 'Stores API' do
 
     assert_response :success
     expect(response).to have_http_status(:created)
-    expect(store).to have_key 'name'
-    expect(store).to have_key 'slug'
-    expect(store).to_not have_key 'created_at'
-    expect(store).to_not have_key 'updated_at'
+    expect(store.name).to eq(store_params[:name])
+    expect(store.slug).to eq(store_params[:slug])
+    expect(store).to_not eq(store_params[:created_at])
+    expect(store).to_not eq(store_params[:updated_at])
   end
 
   it 'can update a store' do

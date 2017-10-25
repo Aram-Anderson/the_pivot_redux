@@ -46,17 +46,19 @@ describe 'Items API' do
   it 'can create an item' do
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(user)
 
-    item_params ={ title: "Cup", description: "To hold our liquid drinks", image: "http://via.placeholder.com/350x150", price: 1.99 }
+    item_params = { title: "Cup", description: "To hold our liquid drinks", image: "http://via.placeholder.com/350x150", price: 1.99 }
 
     post "/api/v1/items", params: {item: item_params}
     item = Item.last
 
     assert_response :success
     expect(response).to have_http_status(:created)
-    expect(item.title).to eq(item_params[:title])
-    expect(item.description).to eq(item_params[:description])
-    expect(item.image).to eq(item_params[:image])
-    expect(item.price).to eq(item_params[:price])
+    expect(item).to have_key 'title'
+    expect(item).to have_key 'description'
+    expect(item).to have_key 'price'
+    expect(item).to have_key 'image'
+    expect(item).to_not have_key 'created_at'
+    expect(item).to_not have_key 'updated_at'
   end
 
   it 'can update an item' do
