@@ -106,11 +106,11 @@
     </div>
     </div>
     <div class="container">
-      <div class="title">
-        <center>
-          <h1><%= link_to "Little Shop Of Funsies", root_path %></h1><br />
-
-        </center>
+      <div class="card card-inverse">
+        <%= image_tag("http://catsisland.com/wordpress/wp-content/uploads/red-silver-egyptian-cats-header1.jpg", class: "card-img") %>
+        <div class="card-img-overlay">
+          <h1 class="card-title text-center text-white"><%= link_to "Little Shop of Funsies", root_path %></h1>
+        </div>
       </div>
     </div>
     <%= yield %>
