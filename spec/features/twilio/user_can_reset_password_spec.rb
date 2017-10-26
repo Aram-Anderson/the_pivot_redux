@@ -24,7 +24,7 @@ feature "User Can Reset Password" do
 
     expect(current_path).to eq("/dashboard")
     expect(page).to have_content "Welcome back, #{user.first_name}!"
-save_and_open_page
+
     click_on "Logout"
     click_on "Login"
 
