@@ -19,11 +19,11 @@ Rails.application.routes.draw do
   get '/password-confirmation', to: 'confirmations#new', as: 'new_password'
   post '/password-confirmation', to: 'passwords#update', as: 'edit_password'
 
-  namespace :admin do
-    resources :dashboard, only: [:index]
-    resources :items, only: [:index, :edit, :new, :create, :update]
-    resources :analytics, only: [:index]
-  end
+  # namespace :admin do
+  #   resources :dashboard, only: [:index]
+  #   resources :items, only: [:index, :edit, :new, :create, :update]
+  #   resources :analytics, only: [:index]
+  # end
 
   namespace :store, path: ':store_slug', as: :store do
     resources :admin, only: [:index]
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     namespace :manager do
       resources :dashboard, only: [:index]
       resources :items, only: [:index, :edit, :update, :new, :create]
-      resources :orders, only: [:index]
+      resources :orders, only: [:index, :edit, :update, :new, :create, :destroy, :show]
       # resources :items, only: [:edit, :update]
     end
   end
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
       resources :items, except: [:new, :edit]
       namespace :stores do
         get "/:id/favorite_user", to: "favorite_user#show"
-        get "/most_revenue", to: "most_revenue_quantity#index"
+        get "/most_revenue", to: "most_revenue#index"
         get "/most_items", to: "most_items#index"
         get "/:id/revenue", to: "revenue#show"
         get "/:id/items", to: "items#index"

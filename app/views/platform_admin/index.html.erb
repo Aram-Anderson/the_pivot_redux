@@ -1,5 +1,72 @@
 
-<div class="container">
-  <h1>PlatformAdmin#index</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+// url (required), options (optional)
+var itemsList = () => {
+  fetch("../api/v1/items/most_popular?api_key=<%= ENV['API_KEY'] %>", {
+    method: 'get'
+  }).then(response => response.json())
+  .then(parsed => {
+    var items = []
+    parsed.forEach(function(value, key) {
+      $(".items").append(`<tr id='${key}'> <td>${value.title}</td> <td class="description">${value.description}</td><td>${value.price}</td></tr>`);
+    });
 
-</div>
+  })
+};
+itemsList()
+// var popularItems = async () => {
+//   return await itemsList()
+// }
+// var items = []
+// popularItems().forEach(function(key, value) {
+//   items.push(`<li id='${key}'>${value}</li>`);
+// });
+</script>
+<div class="row justify-content-md-left">
+  <div class="col-6">
+    <h4>Top 10 items:</h4>
+    <table class="table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="items">
+      </tbody>
+    </table>
+  </div>
+
+<script>
+// url (required), options (optional)
+var storesList = () => {
+  fetch("../api/v1/stores/most_revenue?api_key=<%= ENV['API_KEY'] %>", {
+    method: 'get'
+  }).then(response => response.json())
+  .then(parsed => {
+    var items = []
+    parsed.forEach(function(value, key) {
+        $(".stores").append(`<tr id='${key}'> <td>${value.name}</td></tr>`);
+    });
+
+  })
+};
+storesList()
+</script>
+<div class="row justify-content-md-center">
+  <div class="col">
+    <h4>Top 10 Stores:</h4>
+    <table class="table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="stores">
+      </tbody>
+    </table>
+  </div>
