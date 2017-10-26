@@ -96,15 +96,11 @@ RSpec.feature "Admin Orders" do
 
       within(".order-2") do
         expect(page).to have_content("Cancelled")
-
       end
 
       within(".order-1") do
         click_on("Mark as Paid")
-
       end
-
-      # expect(current_path).to eq("/#{store.slug}/manager/orders?id=#{order1.id}")
 
       within(".order-1") do
         within(".status") do
@@ -115,8 +111,6 @@ RSpec.feature "Admin Orders" do
       within(".order-1") do
         click_on("Mark as Completed")
       end
-
-      # expect(current_path).to eq(store_manager_order_path(store.slug))
 
       within(".order-1") do
         within(".status") do
