@@ -1,0 +1,2 @@
+class MostRevenueController < ApplicationController
+end

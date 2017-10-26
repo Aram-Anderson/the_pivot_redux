@@ -42,9 +42,20 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      namespace :items do
+        get "/most_revenue", to: "most_revenue#index"
+        get "/:id/best_day", to: "best_day#show"
+        get "most_items", to: "most_items#index"
+        get "random", to: "random#show"
+      end
       resources :items, except: [:new, :edit]
-      resources :orders, except: [:new, :edit]
+      namespace :stores do
+        get "/:id/favorite_customer", to: "favorite_customer#show"
+        get "/most_revenue", to: "most_revenue_quantity#index"
+        get "/most_items", to: "most_items#index"
+      end
       resources :stores, except: [:new, :edit]
+      resources :orders, except: [:new, :edit]
     end
   end
 
