@@ -1,12 +1,18 @@
 class Store::Manager::OrdersController < ApplicationController
   def index
+
+    @store = Store.find_by_slug(params[:store_slug])
+
     if params[:status] == "ordered" || params[:status] == "paid" || params[:status] == "cancelled" || params[:status] == "completed"
-      @orders = Order.find(OrderItem.where(item_id: Store.find_by_slug(params[:store_slug]).items.ids).pluck(:order_id)).filter_by_status(params[:status])
+      @orders = @store.orders.where(status: params[:status])
+  
+      # @orders = Order.find(OrderItem.where(item_id: Store.find_by_slug(params[:store_slug]).items.ids).pluck(:order_id)).filter_by_status(params[:status])
     else
 
-      @orders = Order.find(OrderItem.where(item_id: Store.find_by_slug(params[:store_slug]).items.ids).pluck(:order_id))
+      @orders = @store.orders
+      # @orders = Order.find(OrderItem.where(item_id: Store.find_by_slug(params[:store_slug]).items.ids).pluck(:order_id))
     end
-    @store = Store.find_by_slug(params[:store_slug])
+
 
 
   end

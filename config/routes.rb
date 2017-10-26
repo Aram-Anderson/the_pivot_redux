@@ -19,11 +19,11 @@ Rails.application.routes.draw do
   get '/password-confirmation', to: 'confirmations#new', as: 'new_password'
   post '/password-confirmation', to: 'passwords#update', as: 'edit_password'
 
-  namespace :admin do
-    resources :dashboard, only: [:index]
-    resources :items, only: [:index, :edit, :new, :create, :update]
-    resources :analytics, only: [:index]
-  end
+  # namespace :admin do
+  #   resources :dashboard, only: [:index]
+  #   resources :items, only: [:index, :edit, :new, :create, :update]
+  #   resources :analytics, only: [:index]
+  # end
 
   namespace :store, path: ':store_slug', as: :store do
     resources :admin, only: [:index]
