@@ -35,7 +35,7 @@ describe 'Stores API' do
 
   it 'can create a store' do
     store_params ={ name: "Wally World", slug: "slug"}
-
+binding.pry
     post "/api/v1/stores", params: {store: store_params}
     store = Store.last
 

@@ -4,7 +4,11 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def show
+    if params[:api_key] == ENV["API_KEY"]
     render json: Item.find(params[:id]), status: 200
+  else
+    raise ActionController::RoutingError.new('Not Found')
+  end
   end
 
   def create
