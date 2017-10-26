@@ -11,11 +11,9 @@ class PermissionService
     return true if controller == "api/v1/stores/items" && action.in?(%w(index))
     return true if controller == "api/v1/items/most_popular" && action.in?(%w(index))
     return true if controller == "api/v1/stores" && action.in?(%w(index destroy create new update edit))
-<<<<<<< HEAD
 
-=======
       return true if controller == "api/v1/stores/most_revenue" && action.in?(%w(index destroy create new update edit))
->>>>>>> 1ed6b5da1e3778471ff571edb657c3265e93f75e
+
     return true if controller == "store/items" && action.in?(%w(index show))
     return true if controller == "stores" && action.in?(%w(index show))
     return true if controller == "orders" && action.in?(%w(index show))

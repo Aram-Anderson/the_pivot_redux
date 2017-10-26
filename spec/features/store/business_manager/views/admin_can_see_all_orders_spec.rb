@@ -2,24 +2,24 @@ require 'rails_helper'
 
 RSpec.feature "Admin Orders" do
   context "As an admin" do
-    # xit "I can see the total number of orders for each status" do
-    #   role = Role.create(role: 0)
-    #   manager = create(:user, roles: [role])
-    #   store = create(:store)
-    #   user_role = UserRole.create(user_id: manager.id, role_id: role.id, store_id: store.id)
-    #   item = create(:item, store_id: store.id)
-    #
-    #   allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(manager)
-    #   order = create(:order)
-    #   order.items << item
-    #
-    #   visit store_manager_dashboard_index_path(store.slug)
-    #   click_on "Orders"
-    #
-    #   expect(page).to have_content(order.id)
-    #   expect(page).to have_content(order.date)
-    #   expect(page).to have_content(order.status.capitalize)
-    # end
+    it "I can see the total number of orders for each status" do
+      role = Role.create(role: 0)
+      manager = create(:user, roles: [role])
+      store = create(:store)
+      user_role = UserRole.create(user_id: manager.id, role_id: role.id, store_id: store.id)
+      item = create(:item, store_id: store.id)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(manager)
+      order = create(:order)
+      order.items << item
+
+      visit store_manager_dashboard_index_path(store.slug)
+      click_on "Orders"
+
+      expect(page).to have_content(order.id)
+      expect(page).to have_content(order.date)
+      expect(page).to have_content(order.status.capitalize)
+    end
 
     it "I can see orders filtered by status" do
 
