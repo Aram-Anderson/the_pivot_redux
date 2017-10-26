@@ -9,6 +9,7 @@ class PermissionService
   def authorized?
 
     return true if controller == "api/v1/stores/items" && action.in?(%w(index))
+    return true if controller == "api/v1/stores/all_stores" && action.in?(%w(index))
     return true if controller == "api/v1/items/most_popular" && action.in?(%w(index))
     return true if controller == "api/v1/stores" && action.in?(%w(index destroy create new update edit))
     return true if controller == "api/v1/stores/most_revenue" && action.in?(%w(index destroy create new update edit)) 
