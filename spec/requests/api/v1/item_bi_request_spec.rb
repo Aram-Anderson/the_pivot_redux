@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "item business intelligence API" do
+xdescribe "item business intelligence API" do
 
   it "returns the top items ranked by most ordered" do
     user = create(:user, platform_admin: true)
@@ -22,8 +22,8 @@ describe "item business intelligence API" do
     order_item4 = OrderItem.create(order: order3, item:item3, quantity: 5)
     order_item5 = OrderItem.create(order: order2, item:item4, quantity: 7)
 
+    binding.pry
     get "/api/v1/items/most_popular"
-
     items = JSON.parse(response.body)
 
     expect(response).to be_success
