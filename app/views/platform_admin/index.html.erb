@@ -39,7 +39,6 @@ itemsList()
       </tbody>
     </table>
   </div>
-
 <script>
 // url (required), options (optional)
 var storesList = () => {
@@ -70,3 +69,35 @@ storesList()
       </tbody>
     </table>
   </div>
+</div>
+</div>
+<script>
+var allStoresList = () => {
+  fetch("../api/v1/stores/all_stores?api_key=<%= ENV['API_KEY'] %>", {
+    method: 'get'
+  }).then(response => response.json())
+  .then(parsed => {
+    var items = []
+    parsed.forEach(function(value, key) {
+        $(".all-stores").append(`<tr id='${key}'> <td>${value.name}</td><td>${value.status}</td></tr>`);
+    });
+
+  })
+};
+allStoresList()
+</script>
+<div class="row justify-content-md-center">
+  <div class="col">
+    <h4>All Stores and Status:</h4>
+    <table class="table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody class="all-stores">
+      </tbody>
+    </table>
+  </div>
+</div>

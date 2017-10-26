@@ -3,6 +3,8 @@ class Store < ApplicationRecord
   has_many :user_roles
   has_many :users, through: :user_roles
 
+  enum status: ["offline", "active"]
+
   def self.highest_revenue
     select("stores.*, sum(items.price * order_items.quantity) AS revenue")
     .joins(items: [:order_items, :orders])
