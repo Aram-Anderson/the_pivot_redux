@@ -1,10 +1,14 @@
 <div class="container">
-  <div id="left">
-    <%= image_tag 'createaccount.png' %>
+  <div class="row">
+    <div class="col-sm">
+      <%= image_tag 'createaccount.png' %>
+    </div>
+    <div class="col-sm">
+      <%= link_to image_tag("sign_in_with_google.png"), "/auth/google_oauth2" %>
+    </div>
+    <div class="col-sm">
+      <%= link_to image_tag("https://i.imgur.com/UrSU22e.png"), twitter_login_path %>
+    </div>
   </div>
-  <div id="right">
-    <%= link_to image_tag("sign_in_with_google.png"), "/auth/google_oauth2" %>
-  </div>
+  <%= render partial: "form" %>
 </div>
-
-<%= render partial: "form" %>
