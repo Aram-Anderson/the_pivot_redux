@@ -22,8 +22,12 @@ class Item < ApplicationRecord
 	end
 
 	def self.most_popular
-
-		group(:title).joins(:order_items).sum(:quantity).order('DESC')
+		select("items.*, sum(order_items.quantity) AS total")
+		.joins(orders: [:order_items])
+		.merge(Order.completed)
+		.group(:id)
+		.order('total DESC')
+		.limit(10)
 	end
 
 end
