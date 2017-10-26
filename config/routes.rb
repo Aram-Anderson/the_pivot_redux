@@ -51,7 +51,7 @@ Rails.application.routes.draw do
       resources :items, except: [:new, :edit]
       namespace :stores do
         get "/:id/favorite_user", to: "favorite_user#show"
-        get "/most_revenue", to: "most_revenue_quantity#index"
+        get "/most_revenue", to: "most_revenue#index"
         get "/most_items", to: "most_items#index"
         get "/:id/revenue", to: "revenue#show"
         get "/:id/items", to: "items#index"
