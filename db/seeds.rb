@@ -222,6 +222,8 @@ sloth.items.create(title: "Adult Sloth",
 statuses = ["ordered", "paid", "cancelled", "completed"]
 users = [user_1.id, user_2.id, user_3.id, user_4.id]
 
+images = ["sloth-onesie", "zebra-onesie", "pikachu-onesie-girl", "pikachu-onesie-boy", "penguin-onesie", "tiger-onesie", "leopard-onesie", "giraffe-onesie", "flying-squirrel-onesie-1", "flying-squirrel-onesie-2", "unicorn-onesie", "baby-unicorn-onesie"]
+
 statuses.each do |status|
   users.each do |user|
     Order.create(status: status, user_id: user)
@@ -239,7 +241,8 @@ end
 
 Category.all.each do |category|
   50.times do
-    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), store: STORES.sample)
+    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), #image: File.new("./app/assets/images/#{images.sample}.png"),
+   store: STORES.sample)
   end
 end
 

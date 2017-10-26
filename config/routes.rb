@@ -55,6 +55,7 @@ Rails.application.routes.draw do
         get "/most_items", to: "most_items#index"
         get "/:id/revenue", to: "revenue#show"
         get "/:id/items", to: "items#index"
+        get "all_stores", to: "all_stores#index"
       end
       resources :stores, except: [:new, :edit]
       resources :orders, except: [:new, :edit]
