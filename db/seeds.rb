@@ -128,8 +128,12 @@ sloth.items.create(title: "Adult Sloth",
 
 STORES = []
 
-20.times do
+5.times do
   STORES << StoreCreator.new(Faker::Company.name).execute
+end
+
+15.times do
+  STORES << StoreCreator.new(Faker::Company.name, 1).execute
 end
 
 unicorn.items.create(title: "Baby Unicorn",
