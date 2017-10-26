@@ -1,5 +1,24 @@
-<div class="container">
-	<% @stores.each do |store| %>
-		<%= link_to store.name, store_items_path(store_slug: store.slug) %>
-	<% end %>
-</div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+		</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="card-columns">
+				<% @stores.each do |store| %>
+					<div class="card text-center">
+						<img class="card-img-top" src="https://i.pinimg.com/favicons/b5bdfd9767aafe7992cafa00632ab34f134c0977066aa45266d021d6.png?ba91bc3ffa1992035f0d795d09ab5226" alt="Card image cap">
+							<div class="card-body">
+						    <h4 class="card-title"><%= link_to store.name, store_items_path(store_slug: store.slug) %></h4>
+						    <p class="card-text">All work and no play makes Jack a dull boy.</p>
+						    <p class="card-text"><small class="text-muted">Buy My Stuff!</small></p>
+						  </div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</body>
+</html>

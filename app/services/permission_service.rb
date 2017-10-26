@@ -7,14 +7,11 @@ class PermissionService
   end
 
   def authorized?
-
     return true if controller == "api/v1/stores/items" && action.in?(%w(index))
     return true if controller == "api/v1/stores/all_stores" && action.in?(%w(index))
     return true if controller == "api/v1/items/most_popular" && action.in?(%w(index))
     return true if controller == "api/v1/stores" && action.in?(%w(index destroy create new update edit))
-
-      return true if controller == "api/v1/stores/most_revenue" && action.in?(%w(index destroy create new update edit))
-
+    return true if controller == "api/v1/stores/most_revenue" && action.in?(%w(index destroy create new update edit))
     return true if controller == "store/items" && action.in?(%w(index show))
     return true if controller == "stores" && action.in?(%w(index show))
     return true if controller == "orders" && action.in?(%w(index show))
@@ -22,6 +19,7 @@ class PermissionService
     return true if controller == "sessions" && action.in?(%w(new create destroy))
     return true if controller == "carts" && action.in?(%w(index new update create destroy))
     return true if controller == "users" && action.in?(%w(new update create))
+    return true if controller == "categories" && action.in?(%w(index))
     if user.platform_admin?
       return true if controller == "users" && action.in?(%w(index destroy create new update edit))
       return true if controller == "items" && action.in?(%w(index show))
