@@ -15,6 +15,8 @@ class PermissionService
     return true if controller == "carts" && action.in?(%w(index new update create destroy))
     return true if controller == "users" && action.in?(%w(new update create))
     if user.platform_admin?
+      return true if controller == "api/v1/stores/items" && action.in?(%w(index))
+      return true if controller == "api/v1/items/most_popular" && action.in?(%w(index))
       return true if controller == "api/v1/stores" && action.in?(%w(index destroy create new update edit))
       return true if controller == "users" && action.in?(%w(index destroy create new update edit))
       return true if controller == "items" && action.in?(%w(index show))
