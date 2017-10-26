@@ -2,10 +2,10 @@ require 'rails_helper'
 
 feature "business admin can update business info" do
   scenario "as a business administrator" do
-    role = Role.create(role: 2)
+    role = Role.create(role: 1)
     admin = create(:user, roles: [role])
     store = create(:store)
-    # user_role = UserRole.create(user_id: user.id, role_id: role.id, store_id: store.id)
+    user_role = UserRole.create(user_id: admin.id, role_id: role.id, store_id: store.id)
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin)
 
     visit "/#{store.slug}/admin"
