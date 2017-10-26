@@ -1,0 +1,2 @@
+module MostRevenueHelper
+end
