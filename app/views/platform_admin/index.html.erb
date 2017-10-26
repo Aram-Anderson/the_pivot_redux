@@ -1,2 +1,35 @@
-<h1>PlatformAdmin#index</h1>
-<p>Find me in app/views/platform_admin/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+  // url (required), options (optional)
+  var itemsList = () => {
+  fetch("../api/v1/items/most_popular?api_key=<%= ENV['API_KEY'] %>", {
+    method: 'get'
+  }).then(response => response.json())
+  .then(parsed => {
+    var items = []
+    parsed.forEach(function(value, key) {
+      $(".items").append(`<li id='${key}'>${value.title} ${value.price} ${value.description}</li>`);
+    });
+
+  })
+};
+itemsList()
+// var popularItems = async () => {
+//   return await itemsList()
+// }
+// var items = []
+// popularItems().forEach(function(key, value) {
+//   items.push(`<li id='${key}'>${value}</li>`);
+// });
+</script>
+<ul class="items">
+</ul>
+</body>
+</html>
