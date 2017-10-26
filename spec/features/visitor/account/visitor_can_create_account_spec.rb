@@ -22,8 +22,6 @@ feature "New user can create an account" do
     fill_in "user[phone]", with: "+13032229999"
 
     allow(MessageSender).to receive(:send_code).and_return(true)
-
-    allow(MessageSender).to receive(:send_code).and_return(true)
     click_on "Submit"
 
     expect(current_path).to eq(root_path)

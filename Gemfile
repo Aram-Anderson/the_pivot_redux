@@ -24,6 +24,8 @@ gem 'chart-js-rails'
 gem 'twilio-ruby'
 gem 'figaro'
 gem 'active_model_serializers'
+gem 'literate_randomizer'
+gem 'faker'
 
 
 group :development, :test do
@@ -37,7 +39,6 @@ group :development, :test do
   gem 'pry'
   gem 'shoulda-matchers'
   gem 'launchy'
-  gem 'faker'
   gem 'factory_girl'
 end
 

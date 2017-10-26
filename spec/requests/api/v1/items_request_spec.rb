@@ -3,7 +3,8 @@ require 'rails_helper'
 describe 'Items API' do
   it 'see all items' do
     create_list(:item, 3)
-
+    admin = create(:user, platform_admin: true)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     get '/api/v1/items'
 
     expect(response).to have_http_status(200)
