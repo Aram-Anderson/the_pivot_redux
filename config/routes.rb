@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :items do
-        get "/most_revenue", to: "most_revenue#index"
+        get "/most_popular", to: "most_popular#index"
         get "/:id/best_day", to: "best_day#show"
         get "most_items", to: "most_items#index"
         get "random", to: "random#show"

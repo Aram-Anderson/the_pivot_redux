@@ -21,4 +21,9 @@ class Item < ApplicationRecord
 		group(:title).joins(:orders).group(:status).count
 	end
 
+	def self.most_popular
+
+		group(:title).joins(:order_items).sum(:quantity).order('DESC')
+	end
+
 end
