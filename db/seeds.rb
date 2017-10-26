@@ -1,3 +1,7 @@
+start = Time.now
+
+puts "started seeding at #{start}"
+
 Item.destroy_all
 Category.destroy_all
 User.destroy_all
@@ -26,6 +30,8 @@ penguin = Category.create(title: "Penguins", slug: "penguins")
 pokemon = Category.create(title: "Pokemon", slug: "pokemon")
 zebra = Category.create(title: "Zebras", slug: "zebras")
 sloth = Category.create(title: "Sloths", slug: "sloths")
+cow = Category.create(title: "Cows", slug: "cows")
+bird = Category.create(title: "Birds", slug: "birds")
 
 store = StoreCreator.new("onesies").execute
 onesie_manager = UserRole.create(user_id: 1, role_id: bus_man.id, store_id: store.id)
@@ -122,8 +128,8 @@ sloth.items.create(title: "Adult Sloth",
 
 STORES = []
 
-10.times do
-  STORES << Store.create(name: Faker::Name.first_name, slug: Faker::Name.last_name)
+20.times do
+  STORES << StoreCreator.new(Faker::Company.name).execute
 end
 
 unicorn.items.create(title: "Baby Unicorn",
@@ -222,7 +228,6 @@ statuses.each do |status|
   end
 end
 
-
 Order.all.each do |order|
   order.items << Item.all.sample
 end
@@ -231,3 +236,21 @@ OrderItem.all.each do |order_item|
   order_item.quantity = rand(1..10)
   order_item.save!
 end
+
+Category.all.each do |category|
+  50.times do
+    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), store: STORES.sample)
+  end
+end
+
+1000.times do
+  User.create(first_name:  Faker::Name.first_name, last_name:  Faker::Name.last_name, email:  Faker::Internet.email, password:  Faker::Internet.password, address:  Faker::Address.street_address, phone: Faker::PhoneNumber.phone_number)
+end
+
+User.all.each do |user|
+  rand(10..20).times do
+    order = user.orders.create(status: statuses.sample)
+    order.items << Item.all.sample(rand(1..5))
+  end
+end
+puts "Seeding took #{Time.now - start} seconds"
