@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature "Admin can view individual order pages" do
 
-
   scenario "As an admin, when I visit an individual order page" do
     role = Role.create(role: 0)
     manager = create(:user, roles: [role])
@@ -32,14 +31,5 @@ feature "Admin can view individual order pages" do
     expect(page).to have_link(@item_two.title)
     expect(page).to have_content(@item_two.order_items.last.quantity)
     expect(page).to have_content(@item_two.price)
-
-
   end
 end
-
-# And I can see, for each item on the order:
-#
-# The item’s name, which is linked to the item page.
-# Quantity in this order.
-# Price
-# Line item subtotal. And I can see the total for the order. And I can see the status for the order.
