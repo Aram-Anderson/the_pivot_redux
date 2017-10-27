@@ -1,3 +1,18 @@
 <center><h1>Dashboard</h1></center>
-<%= link_to "Items", store_manager_items_path(@store.slug) %>
-<%= link_to "Orders", store_manager_orders_path(@store.slug) %>
+<div class="container">
+  <div class="row">
+      <div class="col">
+        <img class="card-img-top" src="http://www.goodwill.org/wp-content/uploads/2013/12/Hot-50-Items.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title text-center"><%= link_to "Items", store_manager_items_path(@store.slug) %></h4>
+            <p class="card-text">This links to all the items sold in this store.</p>
+          </div>
+      </div>
+      <div class="col">
+        <img class="card-img-top" src="https://www.sellbrite.com/wp-content/uploads/icon-orders.svg" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title text-center"><%= link_to "Orders", store_manager_orders_path(@store.slug) %></h4>
+            <p class="card-text">This links to all the orders from this store.</p>
+          </div>
+      </div>
+  </div>

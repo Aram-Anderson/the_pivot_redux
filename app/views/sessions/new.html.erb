@@ -1,7 +1,17 @@
 <div class="container">
-    <%= image_tag 'login.png' %>
-    <%= link_to image_tag("sign_in_with_google.png"), "/auth/google_oauth2" %>
-    <%= link_to "Sign in with Twitter", twitter_login_path %>
+  <div class="row">
+    <div class="col-sm">
+      <%= image_tag 'login.png' %>
+    </div>
+    <div class="col-sm">
+      <%= link_to image_tag("sign_in_with_google.png"), "/auth/google_oauth2" %>
+    </div>
+    <div class="col-sm">
+      <%= link_to image_tag("https://i.imgur.com/UrSU22e.png"), twitter_login_path %>
+    </div>
+  </div>
+</div>
+<div class="container">
   <div class="row">
     <div class="col-3">
     <table class="table">
@@ -13,7 +23,7 @@
         <tr>
           <td class="table-light"><%= f.label :password %></td>
           <td class="table-light"><%= f.password_field :password %></td>
-          <%= link_to "(Forgot My Password)", password_reset_path %>
+          <%= link_to "Forget your Password? (Click Here)", password_reset_path %>
         </tr>
         <tr class="action">
           <td class="table-light"><%= f.submit name="Login", class: "btn btn-primary" %></td>
