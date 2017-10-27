@@ -27,5 +27,4 @@ application.yml
 # Ignore application configuration
 /config/application.yml
 public/images
-*.yml
 coverage/*
