@@ -1,6 +1,6 @@
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+// url (required), options (optional)
 var itemsList = () => {
   fetch("../api/v1/items/most_popular?api_key=<%= ENV['API_KEY'] %>", {
     method: 'get'
@@ -10,10 +10,16 @@ var itemsList = () => {
     parsed.forEach(function(value, key) {
       $(".items").append(`<tr id='${key}'> <td>${value.title}</td> <td class="description">${value.description}</td><td>${value.price}</td></tr>`);
     });
-
   })
 };
 itemsList()
+// var popularItems = async () => {
+//   return await itemsList()
+// }
+// var items = []
+// popularItems().forEach(function(key, value) {
+//   items.push(`<li id='${key}'>${value}</li>`);
+// });
 </script>
 <div class="row justify-content-md-left">
   <div class="col-6">
@@ -42,7 +48,6 @@ var storesList = () => {
     parsed.forEach(function(value, key) {
         $(".stores").append(`<tr id='${key}'> <td>${value.name}</td></tr>`);
     });
-
   })
 };
 storesList()
@@ -71,9 +76,8 @@ var allStoresList = () => {
   .then(parsed => {
     var items = []
     parsed.forEach(function(value, key) {
-        $(".all-stores").append(`<tr id='${key}'> <td>${value.name}</td><td>${value.status}</td><td><button type="button" class="btn-danger btn-xs">Change Status</button></td></tr>`);
+        $(".all-stores").append(`<tr id='${key}'> <td>${value.name}</td><td>${value.status}</td><td><button type="button" class="btn-xs btn-danger">Change</button></td></tr>`);
     });
-
   })
 };
 allStoresList()
@@ -94,8 +98,3 @@ allStoresList()
     </table>
   </div>
 </div>
-<!-- <script>
-  $(".btn-xs").on('click', function() {
-
-  })
-</script> -->

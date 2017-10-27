@@ -14,7 +14,8 @@ bus_man = Role.find(1)
 bus_admin = Role.find(2)
 
 
-mimi = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi", address: "666 Spooky Ave, Halloween City, NO 66666", phone: "+13033333333")
+mimi = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi", address: "666 Spooky Ave, Halloween City, NO 66666", phone: "+13033333333", platform_admin: true)
+josh = User.create(first_name: "Josh", last_name: "Mejia", email: "josh@josh.com", password: "password", address: "THe Basement", phone: "+13033333333", platform_admin: true)
 user_1 = User.create!(first_name: "Ricky", last_name: "Hoola", email: "ricky@ricky.com", password: "ricky", address: "1111 Hoola Hoop Drive, Big Island, HI 90505", phone: "+13033333333")
 user_2 = User.create(first_name: "Sam", last_name: "Snider", email: "snider@sam.com", password: "sam", address: "1000 Sunny Dr., Sunshine, CO 10000", phone: "+13033333333")
 user_3 = User.create(first_name: "Kali", last_name: "Bike Rider", email: "kali@biking.com", password: "bike", address: "1010 Biking Home, Cool CA 10101", phone: "+13033333333")
@@ -244,36 +245,8 @@ OrderItem.all.each do |order_item|
 end
 
 Category.all.each do |category|
-  10.times do
-    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), image: File.new("./app/assets/images/#{images.sample}.png"),
-   store: STORES.sample)
-  end
-end
-
-Category.all.each do |category|
-  10.times do
-    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), image: File.new("./app/assets/images/#{images.sample}.png"),
-   store: STORES.sample)
-  end
-end
-
-Category.all.each do |category|
-  10.times do
-    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), image: File.new("./app/assets/images/#{images.sample}.png"),
-   store: STORES.sample)
-  end
-end
-
-Category.all.each do |category|
-  10.times do
-    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), image: File.new("./app/assets/images/#{images.sample}.png"),
-   store: STORES.sample)
-  end
-end
-
-Category.all.each do |category|
-  10.times do
-    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), image: File.new("./app/assets/images/#{images.sample}.png"),
+  50.times do
+    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2),
    store: STORES.sample)
   end
 end
