@@ -244,8 +244,36 @@ OrderItem.all.each do |order_item|
 end
 
 Category.all.each do |category|
-  50.times do
-    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), #image: File.new("./app/assets/images/#{images.sample}.png"),
+  10.times do
+    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), image: File.new("./app/assets/images/#{images.sample}.png"),
+   store: STORES.sample)
+  end
+end
+
+Category.all.each do |category|
+  10.times do
+    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), image: File.new("./app/assets/images/#{images.sample}.png"),
+   store: STORES.sample)
+  end
+end
+
+Category.all.each do |category|
+  10.times do
+    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), image: File.new("./app/assets/images/#{images.sample}.png"),
+   store: STORES.sample)
+  end
+end
+
+Category.all.each do |category|
+  10.times do
+    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), image: File.new("./app/assets/images/#{images.sample}.png"),
+   store: STORES.sample)
+  end
+end
+
+Category.all.each do |category|
+  10.times do
+    category.items.create(title: Faker::Lorem.word, description: LiterateRandomizer.paragraph, price: rand(0.99..500.00).round(2), image: File.new("./app/assets/images/#{images.sample}.png"),
    store: STORES.sample)
   end
 end

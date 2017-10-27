@@ -56,7 +56,7 @@ Rails.application.routes.draw do
         get "/:id/revenue", to: "revenue#show"
         get "/:id/items", to: "items#index"
         get "all_stores", to: "all_stores#index"
-        get "filter_all_stores", to: "all_stores#update"
+        get "change_store_status", to: "all_stores#update"
       end
       resources :stores, except: [:new, :edit]
       resources :orders, except: [:new, :edit]

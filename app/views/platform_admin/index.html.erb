@@ -1,7 +1,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-// url (required), options (optional)
 var itemsList = () => {
   fetch("../api/v1/items/most_popular?api_key=<%= ENV['API_KEY'] %>", {
     method: 'get'
@@ -15,13 +14,6 @@ var itemsList = () => {
   })
 };
 itemsList()
-// var popularItems = async () => {
-//   return await itemsList()
-// }
-// var items = []
-// popularItems().forEach(function(key, value) {
-//   items.push(`<li id='${key}'>${value}</li>`);
-// });
 </script>
 <div class="row justify-content-md-left">
   <div class="col-6">
@@ -79,7 +71,7 @@ var allStoresList = () => {
   .then(parsed => {
     var items = []
     parsed.forEach(function(value, key) {
-        $(".all-stores").append(`<tr id='${key}'> <td>${value.name}</td><td>${value.status}</td></tr>`);
+        $(".all-stores").append(`<tr id='${key}'> <td>${value.name}</td><td>${value.status}</td><td><button type="button" class="btn-danger btn-xs">Change Status</button></td></tr>`);
     });
 
   })
@@ -94,6 +86,7 @@ allStoresList()
         <tr>
           <th>Name</th>
           <th>Status</th>
+          <th>Change Status</th>
         </tr>
       </thead>
       <tbody class="all-stores">
@@ -101,3 +94,8 @@ allStoresList()
     </table>
   </div>
 </div>
+<!-- <script>
+  $(".btn-xs").on('click', function() {
+
+  })
+</script> -->
