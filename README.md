@@ -47,4 +47,8 @@ Testing Twilio was another challenge, but also a great learning experience. Ther
 
 All in all, I feel like this really was a good learning experience, and even though as a finished product it's not the work I'm most proud of, as a platform for learning new things it was a great success. It also thrust us into working with a codebase we didn't have control over, and learning to work in someone else's code. I think that's useful as a practical lesson, as well as a lesson in empathy.
 
+If you'd like to get the app stood up locally, clone it down, cd into the directory, bundle, rake db:{create,migrate,seed}, rails s, and go to localhost:3000. There is a user in the seed file with all permissions with the login of 'mimi@mimi.com', and password 'mimi'.
+
+Twilio and Twitter OAuth will not work unless you create an `application.yml` file and add your own keys for those services. 
+
 <b>Collaborators:</b> Aram Anderson (@Aram-Anderson), Danny Trujillo (@djtrujillo), Joan Harrington (@sidewinder2020), Sam Nayrouz (@snayrouz)
