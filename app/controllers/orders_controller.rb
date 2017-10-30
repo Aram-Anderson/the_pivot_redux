@@ -7,16 +7,16 @@ class OrdersController < ApplicationController
 	end
 
 	def show
-		@order = Order.find(params[:id])
-		unless current_user.id == @order.user_id
-			redirect_to dashboard_index_path
+		@order = current_user.orders.find(params[:id])
+			redirect_to dashboard_index_path unless @order
 		end
 	end
 
 	def update
-		@order = Order.find(params[:id])
-		@order.update(status: params[:status])
-		@order.save
+		if @order = current_user.orders.find(params[:id])
+			@order.update(status: params[:status])
+			@order.save
+		end
 		redirect_back(fallback_location: root_path)
 	end
 
@@ -31,8 +31,8 @@ class OrdersController < ApplicationController
 	end
 
 	private
-		def require_current_user
-			redirect_to login_path unless current_user
-		end
+	def require_current_user
+		redirect_to login_path unless current_user
+	end
 
 end
